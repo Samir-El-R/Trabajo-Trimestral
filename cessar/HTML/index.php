@@ -333,7 +333,7 @@ session_start();
                         </style>';
                         echo '<div class="columna">';
                             echo "<div class='titulo_autor'>";
-                            echo "<div class='titulo'> Post : " . $fila['post_titulo'] . '</div>';
+                            echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
 
                             echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
                             echo "<div class='autor'> <div class='foto'> 

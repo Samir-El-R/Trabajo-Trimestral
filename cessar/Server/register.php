@@ -23,7 +23,7 @@ if (isset($_POST['registrarse'])) {
     } else if (empty($correo)) {
         echo "Introduzca su correo!";
 
-    } else if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $correo)) {
+    } else if (preg_match('/^[^0-20][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $correo)) {
         echo "El correo no es valido!";
 
     } else if (empty($nombre)) {
