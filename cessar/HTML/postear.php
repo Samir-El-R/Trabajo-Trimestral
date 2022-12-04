@@ -29,17 +29,13 @@
 
 <body>
     <?php
-
-
-    include '../Server/conectarse.php';
     session_start();
-
     require 'header.php';
     ?>
     <main>
         <div class="formulario">
             <div class="post_formulario">
-                <form method="post" action="../Server/postear.php" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                     <label for="tema">Escoge Tema:</label>
                     <select name="temas" id="temas" require>
                         <option value="general">General</option>
@@ -58,11 +54,12 @@
                     <input type="submit" value="Publicar" id="publicar" name="publicar">
                 </form>
             </div>
-
-
         </div>
     </main>
-   
+
+   <?php
+    require '../Server/postear.php';
+    ?>
 </body>
 
 </html>
