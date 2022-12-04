@@ -2,11 +2,6 @@ crear pagina posts[importante]
 dar estilo a postear
 
 
-
-
-
-
-
 validar (postear, register y login) js 
 validar (login)  php
 

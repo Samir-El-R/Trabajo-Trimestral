@@ -1,9 +1,6 @@
 <?php
 
 include 'conectarse.php';
-
-session_start();
-
 if (isset($_POST['publicar'])) {
     $autor = $_SESSION["username"];
     $post = $_POST['post'];
