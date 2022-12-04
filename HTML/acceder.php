@@ -12,20 +12,7 @@
 <body>
     <?php
     require 'header.php';
-
     ?>
-
-    <style type="text/css">
-        <?php
-        if (isset($error)) {
-        ?>input:focus {
-            border: solid red 1px;
-        }
-
-        <?php
-        }
-        ?>
-    </style>
     <section class="forms-section ">
         <!-- login -->
         <div class="forms">
@@ -34,7 +21,7 @@
                     Iniciar Sesión
                     <span class="underline"></span>
                 </button>
-                <form class="form form-login" id="form-login" method="POST" action="../Server/login.php">
+                <form class="form form-login" id="form-login" method="post" action="../Server/login.php">
                     <fieldset>
 
                         <div class="input-block">
@@ -60,7 +47,7 @@
                     Registrarse
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" method="POST" action="../Server/register.php">
+                <form class="form form-signup" method="post" >
                     <fieldset>
                         <div class="input-block">
                             <label for="usuario_signup">Usuario</label>
@@ -99,18 +86,8 @@
         </div>
     </section>
     <?php
-    if (isset($error)) {
+    include "../Server//register.php"
     ?>
-        <p> id="error"><?php echo $error; ?></p>
-    <?php
-    }
-
-    ?>
-    <input type="text" name="mno" placeholder="Mobile No" value="<?php if (isset($mno)) {
-                                                                        echo $mno;
-                                                                    } ?>" <?php if (isset($code) && $code == 3) {
-                                                                                                            echo "autofocus";
-                                                                                                        }  ?> />
 </body>
 
 <script>
