@@ -3,6 +3,8 @@ dar estilo a postear
 
 
 
+hacer que si seleccionas tema de post solo te muestre los de ese tema
+
 
 
 

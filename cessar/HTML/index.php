@@ -18,8 +18,8 @@ session_start();
             font-weight: bolder;
             margin-top: 25px;
             text-align: center;
-            font-size: 25px;
-            padding: 25px;
+            font-size: 30px;
+            padding: 20px;
         }
         .p_temas{
             padding-top: 9px;
@@ -52,7 +52,7 @@ session_start();
             justify-content: center;
             border: 1px solid white;
             height: 100%;
-            width: 80%;
+            width: 70%;
             z-index: 0;
             margin-top: 50px;
             display: flex;
@@ -60,12 +60,8 @@ session_start();
         }
 
         .listas {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             background-color: #313131;
             width: 100%;
-            border-bottom: 1px solid white;
             height: 100%;
             text-align: center;
             
@@ -73,16 +69,13 @@ session_start();
         }
 
         .columna {
+            background-color: #212121;
             width: 100%;
-            height: 210%;
-            border-bottom: 1px solid white;
             flex-direction: column;
         }
 
         .listas ul li {
-            display: inline-block;
-            flex-wrap: wrap;
-            
+            list-style: none;    
         }
         .listas ul{
             display: flex;
@@ -143,20 +136,21 @@ session_start();
             box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
         }
 
-.ultimas_publicaciones{
-    padding: 25px;
-    display: flex;
-    font-size: 25px;
-    font-weight: bolder;
-    justify-content: center;
-}
+            .ultimas_publicaciones{
+                background-color: #313131;
+                padding: 25px;
+                display: flex;
+                font-size: 25px;
+                font-weight: bolder;
+                justify-content: center;
+            }
         /* inicio bloque post */
 
 
         .general_post {
-            
+
             height: 100%;
-            width: 80%;
+            width: 100%;
 
         }
 

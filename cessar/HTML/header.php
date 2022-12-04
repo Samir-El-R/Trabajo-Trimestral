@@ -1,5 +1,5 @@
 <style>
-
+        /* Stilo de elementos generales */
         * {
             margin: 0;
             padding: 0;
@@ -13,39 +13,68 @@
             height: 65px;
             padding-top: 10px;
         }
-    
-        .text_logo {
-            min-width: 30%;
-            width: 50%;
-            display: flex;
-            justify-content:space-between;
-            margin-left: 40px;
-            font-weight: bold;
-            font-size: xx-large;
-            color: #FFFFFF;
-            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
-        }
-    
-    
-        .menu_header {
-            display: flex;
-            justify-content: flex-end;
-            width: 70%;
-            flex-wrap: wrap;
-            
-        }
+
         ul{
             display: flex;
         }
-       
-    
-        .botones_header {
+
+        li>a{
+           color: black;
+       }
+
+        /* div de logo + titulo */
+
+
+        .text_logo {
             
+            min-width: 30%;
+            width: 100%;
+            display: flex;
+            justify-content:space-evenly;
+            margin-left: 40px;
+            font-weight: bold;
+            font-size: xx-large;
+            color: white;
+            text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+        }
+
+
+        .imagen_logo{    
+            padding-top: 5px;
+            min-width: 40px;
+        }
+
+        .nombre_logo{  
+           
+            justify-content: flex-end;
+        }
+        
+        .logo {
+            min-width: 30px;
+            min-height: 30px;
+        }
+        svg{
+            width: 40px;
+            height: 40px;
+        }
+
+
+        /* div de botones */
+
+
+        .menu_header {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            flex-wrap: wrap;
+            
+        }
+  
+        .botones_header {
             display: inline-block;
             text-align: center;
             cursor: pointer;
             margin-top: 10px;
-            
             margin-right: 50px;
             width: 100px;
             height: 25px;
@@ -58,23 +87,16 @@
         .botones_header li {
             padding-top: 3px;
             list-style: none;
-    
         }
-    
         .botones_header li a {
-    
             color: white;
             text-decoration: none;
-    
         }
-        
         .boton_cerrar_sesion {
-            color: black;
             margin-top: 5px;
-            margin-right: 20px;
+            padding-right: 40px;
         }
-        .desplegable{
-            
+        .desplegable{  
             visibility: hidden;
             margin-left: 10px;
         }
@@ -92,8 +114,6 @@
             padding: 10px;
             color: black;
         }
-       
-        
         .desplegable li:hover>ul{
             display: block;
         }
@@ -104,30 +124,24 @@
         }
     
         
-        .imagen_logo{
-            
-            justify-content: flex-start;
-            width: 40px;
-        }
-       li>a{
-           color: black;
-       }
-        .nombre_logo{
-            
-            text-align: center;
-            width: 70px;
-            justify-content: flex-end;
-        }
         
-        .logo {
-    
-            min-width: 30px;
-            min-height: 30px;
+       
+        
+
+
+
+        /* Medias */
+
+        /* Media para ocultar el titulo */
+
+        @media (max-width: 700px) {
+            .nombre_logo{
+            display: none;
+            }
         }
-        svg{
-            width: 40px;
-            height: 40px;
-        }
+
+
+
     </style>
     <header>
         <div class="header">
