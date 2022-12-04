@@ -10,10 +10,11 @@
 </head>
 
 <body>
-    <?php
-    require 'header.php';
-    ?>
-    <section class="forms-section ">
+   <?php
+       require 'header.php';
+       
+    ?>  
+      <section class="forms-section ">
         <!-- login -->
         <div class="forms">
             <div class="form-wrapper is-active ">
@@ -21,7 +22,7 @@
                     Iniciar Sesión
                     <span class="underline"></span>
                 </button>
-                <form class="form form-login" id="form-login" method="post" action="../Server/login.php">
+                <form class="form form-login" id="form-login" method="POST" action="../Server/login.php">
                     <fieldset>
 
                         <div class="input-block">
@@ -47,7 +48,7 @@
                     Registrarse
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" method="post" >
+                <form class="form form-signup" method="POST" action="../Server/register.php">
                     <fieldset>
                         <div class="input-block">
                             <label for="usuario_signup">Usuario</label>
@@ -78,27 +79,24 @@
                             <input type="password" name="confirmar_contrasena_signup" id="confirmar_contrasena_signup" required>
                         </div>
                     </fieldset>
-
+                    
                     <button type="submit" name="registrarse" id="enviar_register" class="btn-signup">Registrarse</button>
                     <button type="reset" class="btn-signup">Limpiar</button>
                 </form>
             </div>
         </div>
     </section>
-    <?php
-    include "../Server//register.php"
-    ?>
 </body>
 
-<script>
-    const switchers = [...document.querySelectorAll('.switcher')]
-
-    switchers.forEach(item => {
-        item.addEventListener('click', function() {
-            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
-            this.parentElement.classList.add('is-active')
-        })
-    })
-</script>
-
+        <script>
+            const switchers = [...document.querySelectorAll('.switcher')]
+    
+            switchers.forEach(item => {
+                item.addEventListener('click', function () {
+                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                    this.parentElement.classList.add('is-active')
+                })
+            })
+        </script>
+            
 </html>

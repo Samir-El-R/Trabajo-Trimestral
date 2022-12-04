@@ -1,6 +1,8 @@
 <?php
 include 'conectarse.php';
-if (isset($_POST['registrarse'])) {
+session_start();
+
+if (true) {
 
     $usuario = $_POST['usuario_signup'];
     $correo = $_POST['nombre_real'];
@@ -9,76 +11,43 @@ if (isset($_POST['registrarse'])) {
     $contrasena = $_POST['contrasena_signup'];
     $confirmar_contrasena = $_POST['confirmar_contrasena_signup'];
     $fecha = date('Y-m-d H:i:s');
+    // $errors = array();
+    if ($confirmar_contrasena == $contrasena) {
 
-?>
-<!-- <form class="form form-signup" method="post" action="../HTML/acceder.php"> -->
+        $MyBBDD->consulta("SELECT * FROM registro where email = '$correo'");
 
-<?php
-    if (empty($usuario)) {
-        echo "Introduzca su usuario!";
+        if (!$MyBBDD->numero_filas() > 0) {
 
-    } else if (!ctype_alnum($usuario)) {
-        echo "El usuario solo debe tener letras y numeros!";
-
-    } else if (empty($correo)) {
-        echo "Introduzca su correo!";
-
-    } else if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $correo)) {
-        echo "El correo no es valido!";
-
-    } else if (empty($nombre)) {
-        echo "Introduzca su nombre!";
-
-    } else if (!ctype_alpha($nombre)) {
-        echo "Solamente letras en elnombre!";
-
-    } else if (empty($apellidos)) {
-        echo "Introduzca sus apellidos!";
-
-    } else if (!ctype_alpha($nombre)) {
-        echo "Solamente letras en el apellido!";
-
-    } else if (empty($contrasena)) {
-        echo "Introduzca sus contraseña !";
-
-    } else if (strlen($contrasena) < 8) {
-        echo "La contraseña debe tener al menos 8 caracteres !";
-
-    } else if (empty($confirmar_contrasena)) {
-        echo "Introduzca sus contraseña !";
-
-    } else if (strlen($confirmar_contrasena) < 8) {
-        echo "La contraseña debe tener al menos 8 caracteres !";
-
-    } else {
-        if ($confirmar_contrasena == $contrasena) {
-
-            $MyBBDD->consulta("SELECT * FROM registro where email = '$correo'");
+            $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
 
             if (!$MyBBDD->numero_filas() > 0) {
 
+                $MyBBDD->consulta("INSERT INTO registro (usuario,nombre,apellido,fecha_creacion,email,contrasena) values ('$usuario','$nombre','$apellidos','$fecha','$correo','$contrasena')");
+
                 $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
 
-                if (!$MyBBDD->numero_filas() > 0) {
-
-                    $MyBBDD->consulta("INSERT INTO registro (usuario,nombre,apellido,fecha_creacion,email,contrasena) values ('$usuario','$nombre','$apellidos','$fecha','$correo','$contrasena')");
-
-                    $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
-
-                    if ($MyBBDD->numero_filas() > 0) {
-
-                        echo "registrado";
-                    } else {
-                        echo "Hay un error en la base de datos";
-                    }
+                if ($MyBBDD->numero_filas() > 0) {
+                    // echo "<script> alert('Usuario registrado con exito')</script>";
+                    // $usuario = "";
+                    // $correo = "";
+                    // $nombre = "";
+                    // $apellidos = "";
+                    // $contrasena = "";
+                    echo ("registrado");
                 } else {
-                    echo "EL usuario existe";
+                    echo ("Hay un error");
                 }
             } else {
-                echo "EL correo ya existe";
+                echo ("existe usuario");
             }
         } else {
-            echo "Las contraseñas no son iguales";
+            echo ("existe correo");
         }
+    } else {
+        echo ("no son iguales");
     }
-} 
+} else {
+    echo ("Algo ha fallado");
+}
+
+

@@ -25,10 +25,10 @@
             padding-top: 10px;
         }
     
-        body {
+        /* body {
             background-color: #313131;
             color: white;
-        }
+        } */
     
         .text_logo {
             min-width: 30%;

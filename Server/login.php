@@ -18,5 +18,5 @@ if (true) {
     // echo json_encode("no existe");
   }
 } else {
-  header("location: ../HTML/register_modelo.php");
+  header("location: ../HTML/acceder.php");
 }

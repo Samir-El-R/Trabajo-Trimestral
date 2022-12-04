@@ -44,7 +44,7 @@
     $user="root";
     $password="";
     $dbname="foro";
-    $port=3307;
+    $port=3306;
     $socket="";
 
     $MyBBDD = new BBDD($host, $user, $password, $dbname, $port, $socket);

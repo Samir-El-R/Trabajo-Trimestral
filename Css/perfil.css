@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-
-
+body{
+    overflow-y:hidden;
+    background-color: #313131;
+}
 .container {
     background: #ecf4ff;
     color: #1c1c1c;
@@ -262,19 +263,6 @@ button:hover {
     color: #fff
 }
 
-/* div {
-    content: 'Hi';
-    position: absolute;
-    bottom: -15px;
-    right: -20px;
-    background: #50505a;
-    color: #fff;
-    width: 320px;
-    padding: 16px 4px 16px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    box-shadow: 10px 10px 40px -14px #000
-} */
 
 
 
@@ -294,21 +282,98 @@ button:hover {
 
 
 
+#contenedor_posts {
+   
+    visibility: hidden;
 
-
-
-
-
+} 
 
 .contenedor_posts {
-  background: #ecf4ff;
-  color: #1c1c1c;
-  margin: 64px;
-  border-radius: 20px;
-  box-shadow: 6px 6px 6px #0e1d2f;
-  padding: 64px;
+   
+    background: #000000;
+    color: #1c1c1c;
+    margin: 64px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 6px #0e1d2f;
+    padding: 64px;
+ border: 2px solid red;
+
 } 
+.titulo_autor{
+    padding-top: 35px;  
+    display:flex ;
+    justify-content: space-between;
+  }
+  .titulo{
+    height: 80px;
+    margin-left: 30px;
+    width:400px ; 
+    
+    color: white;
+    font-size: 25px;
+  }
+  .autor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 30px;
+    height: 100px;
+    width:150px ; 
+    color: white;
+  }
+  .tema{
+    
+    height: 30px;
+    margin-top:50px;
+    width:300px ; 
+    color: white;
+  }
+  .foto{
+    background-color: white;
+    height: 60px;
+    width: 70px;
+  }
+  .imagen{
+    height: 60px;
+    width: 70px;
+  }
+
+ 
+
+h1{
+    color: black;
+}
+.h3{
+    color: #000;
+}
+
+
+
+
+
+
+
+.cerrar_posts {
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+}
+
+.cerrar_posts:hover {
+    color: #06D85F;
+}
+
+
 /*  
+.cajita{
+    visibility: hidden;
+}
+ 
 .caja_posts {
   display: flex;
   align-items: center;

@@ -211,7 +211,7 @@ session_start();
 
     <?php
     require 'header.php';
-    require '../Server/conectarse.php';
+    include '../Server/conectarse.php';
     ?>
 
     <main>
