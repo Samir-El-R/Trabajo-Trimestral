@@ -1,10 +1,19 @@
-validar (postear, register y login) js 
-validar (postear, register y login)  php
-
-*Hacer desplegable de perfil incluyendo cerrar sesion , mis posts y mi perfil* opcional
-crear pagina perfil
-añadir en la pagina perfil ver imagen y cambio de imagen[muy opcional]
-crear pagina posts
+crear pagina posts[importante]
 dar estilo a postear
+
+
+
+
+
+
+
+validar (postear, register y login) js 
+validar (login)  php
+
+
+añadir en la pagina perfil ver imagen y cambio de imagen[muy opcional]
+
+
+
 comentar todo
 crear memoria

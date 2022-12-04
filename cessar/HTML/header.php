@@ -1,19 +1,8 @@
 <style>
-        :root {
-            --header: #111111;
-            --main: #212121;
-            --icono: #838383;
-            --menu: #313131;
-            --blanco: #ffffff;
-            --purple: #7f00ff;
-            --pink: #e100ff;
-            --azul: #0aadff;
-        }
-    
+
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
         
         .header {
@@ -24,11 +13,6 @@
             height: 65px;
             padding-top: 10px;
         }
-    
-        /* body {
-            background-color: #313131;
-            color: white;
-        } */
     
         .text_logo {
             min-width: 30%;
