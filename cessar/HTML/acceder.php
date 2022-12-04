@@ -65,7 +65,7 @@
                     Registrarse
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" method="POST" action="../Server/register.php">
+                <form class="form form-signup" method="POST">
                     <fieldset>
 
                         <!-- Campo usuario -->
@@ -119,6 +119,9 @@
             </div>
         </div>
     </section>
+    <?php
+    include "../Server/register.php"
+    ?>
 </body>
 
         <!-- Script para dar primer plano al div que deseemos dependiendo de si hacemos click en "INICIAR SESIÓN" O "REGISTRARSE" -->
