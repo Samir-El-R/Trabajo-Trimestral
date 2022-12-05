@@ -9,6 +9,9 @@
     <title>Postear</title>
 
     <style>
+
+/* Style de pagina post */
+
         body {
             background-color: #212121;
             color: white;
@@ -17,8 +20,6 @@
         main{
             display: flex;
         }
-
-        
         .post_formulario{
             display: flex;
             justify-content: center;
@@ -34,9 +35,15 @@
     require 'header.php';
     ?>
     <main>
+
+        <!-- Formulario para rellenar informacion relevante de cada post -->
+
         <div class="formulario">
             <div class="post_formulario">
                 <form method="post" enctype="multipart/form-data">
+
+                    <!-- Select para seleccionar tema de post -->
+
                     <label for="tema">Escoge Tema:</label>
                     <select name="temas" id="temas" require>
                         <option value="general">General</option>
@@ -46,18 +53,30 @@
                         <option value="ciclos">Ciclos</option>
                     </select>
                     <br>
+
+                    <!-- Selección de titulo para el post -->
+
                     <label for="post_titulo">Titulo del Post</label>
                     <input type="text" name="post_titulo" id="post_titulo">
                     <br>
+
+                    <!-- Selección de imagen para el post -->
+
                     <label for="file">seleccion img </label>
                     <input type="file" name="file" id="file" accept="image/png, image/jpeg"><br>
+
+                    <!-- Selección de contenido para el post -->
+
+                    <label for="post_contenido">Contenido post:</label>
                     <textarea name="post" id="contenido" cols="30" rows="10"></textarea>
+
+                    <!-- Botón para mandar la información -->
+
                     <input type="submit" value="Publicar" id="publicar" name="publicar">
                 </form>
             </div>
         </div>
     </main>
-
    <?php
     require '../Server/postear.php';
     ?>

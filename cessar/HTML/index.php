@@ -186,7 +186,7 @@ session_start();
             margin-left: 35%;
             width: 300px;
             color: white;
-        }
+        } 
 
         .foto {
             background-color: white;
@@ -209,23 +209,26 @@ session_start();
     ?>
 
     <main>
+
+        <!-- Si hay algun usuario reistrado se le da la bienvenida -->
+
         <div class="bienvenida">
             <?php
             if (isset($_SESSION["username"])) {
-
                 echo "Bienvenido " . $_SESSION["username"] . "!!";
             }
             ?>
         </div>
 
+            <!-- Bloque de posts donde se dan unas opciones de filtro y se mostraran más abajo -->
 
         <div class="postear">
-            <div class="p_temas">
-                <p>Elegir tema:</p>
-            </div>
+            <div class="p_temas"> <p>Elegir tema:</p> </div>
             <div class="listas">
-
                 <ul>
+
+                    <!-- Listas con las opciones de temas de post -->
+
                     <div>
                         <li>
                             <form action="" method="post">
@@ -273,7 +276,7 @@ session_start();
 
 
             <?php
-            echo '  <style>
+            echo '<style>
                             
              /* inicio bloque post */
      
@@ -317,6 +320,8 @@ session_start();
      
      
          </style>';
+
+            // Printeo de los post dependiendo del tema que se haya seleccionado
 
             $valor = true;
             if (isset($_POST['general'])) {
@@ -459,9 +464,6 @@ session_start();
                 }
             }
 
-
-
-            // $MyBBDD != false;
             if ($valor) {
                 $MyBBDD->consulta("SELECT * FROM posts order by post_fecha");
                 $cantidad = 0;
@@ -480,18 +482,12 @@ session_start();
                             . $fila['post_imagen'] . "'></div>";
                         echo $fila['post_autor'];
                         echo '</div>';
-
-
                         echo '</div>';
                     }
                 }
             }
-
-
-
             ?>
         </div>
     </main>
 </body>
-
 </html>

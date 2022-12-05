@@ -25,12 +25,11 @@
         /* div de logo + titulo */
 
 
-        .text_logo {
-            
-            min-width: 30%;
-            width: 100%;
+        .text_logo {   
+            min-width: 20%;
+            width: 110%;
             display: flex;
-            justify-content:space-evenly;
+            justify-content:space-between;
             margin-left: 40px;
             font-weight: bold;
             font-size: xx-large;
@@ -46,7 +45,7 @@
 
         .nombre_logo{  
            cursor: pointer;
-            justify-content: flex-end;
+           justify-content: flex-end;
         }
         
         .logo {
@@ -65,9 +64,8 @@
         .menu_header {
             display: flex;
             justify-content: flex-end;
-            width: 100%;
-            flex-wrap: wrap;
-            
+            width: 90%;
+            flex-wrap: wrap;     
         }
   
         .botones_header {
@@ -96,6 +94,9 @@
             margin-top: 5px;
             padding-right: 40px;
         }
+
+        /* Desplegable */
+
         .desplegable{  
             visibility: hidden;
             margin-left: 10px;
@@ -139,13 +140,12 @@
             display: none;
             }
         }
-
-
-
     </style>
     <header>
         <div class="header">
-    
+
+            <!-- svg del logo que sirve para volver a la página principal -->
+
             <div class="text_logo"> <a href="../HTML/index.php">
             <div class="imagen_logo"><svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" version="1.1" viewBox="0 0 1062 1062" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <circle cx="531.308" cy="531.308" id="circle6" r="531.308" style="fill:rgb(37,183,211);" />
@@ -162,52 +162,40 @@
                     </g>
                 </svg></div>
             </a>
-                
+
+                <!-- Titulo que sirve para volver a la página principal -->
+
                 <div class="nombre_logo" id="logo"><h3 class="titulo_logo">ZonaFitness</h3> </div>
                 <script>
                     let logo = document.getElementById("logo");
                     logo.addEventListener("click",function () {
-                        location.href = "index.php";
-                        
-                    })
-
-                     
+                        location.href = "index.php";    
+                    })  
                 </script>
                     
             </div>
             <div class="menu_header">
                 <ul>
-    
-                    <div  class="botones_header" <?php
-                    if (isset($_SESSION["username"])) {
-
-                        echo 'style="display: none;"';
-                    } ?>>
+                    <!-- Botones del header,dependiendo de si esta registrado o no un usuario se mostrarán -->
+                    <div  class="botones_header" <?php if (isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
                         <li>
                             <a href="../HTML/acceder.php" id="boton_iniciar_sesion">Acceder</a>
                         </li>
                     </div>
     
-                    <div  class="botones_header" <?php if (!isset($_SESSION["username"])) {
-                        echo 'style="display: none;"';
-                    } ?>>
+                    <div  class="botones_header" <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
                         <li>
                             <a href="postear.php" id="boton_postear">Postear</a>
                         </li>
                     </div>
     
-    
                     <div>
-                        <div class="botones_header" id="boton_acceder" <?php if (!isset($_SESSION["username"])) {
-                            echo 'style="display: none;"';
-                        } ?> >
+                        <div class="botones_header" id="boton_acceder" <?php if (!isset($_SESSION["username"])){echo 'style="display: none;"';} ?> >
                             <li>
                                 <p>Perfil</p>
                             </li>
                         </div>
-                        <div class="desplegable" id="desplegable"  <?php if (!isset($_SESSION["username"])) {
-                            echo 'style="display: none;"';
-                        } ?>>
+                        <div class="desplegable" id="desplegable"  <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
                             <ul>
                                 <li>
                                     <a href="../HTML/perfil.php" >Ir a perfil</a> 
@@ -217,45 +205,34 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!-- Script para ocultar o mostrar el menu desplegable de perfil -->
+
                         <script>
                             let boton_acceder = document.getElementById("boton_acceder");
                             let desplegable = document.getElementById("desplegable");
-
-                    
                             boton_acceder.addEventListener("click",function () {
-        // desplegable.style.visibility = "visible";
-                                    if( desplegable.style.visibility=="hidden"){
-                                         desplegable.style.visibility="visible"; 
-
-                                     }else{
-                                         desplegable.style.visibility="hidden";
+                                if(desplegable.style.visibility=="hidden"){
+                                    desplegable.style.visibility="visible";
+                                }else{
+                                    desplegable.style.visibility="hidden";
                                 }   
-        
-      })
-  
-                            
+                            })   
                         </script>
-    
                     </div>
                     
-                    <div class="boton_cerrar_sesion" <?php if (!isset($_SESSION["username"])) {
-                        echo 'style="display: none";';
-                    } ?>>
-    
+                    <!-- Svg de cerrar sesión, es un enlace a cerrar_sesion.php donde se acaba la sesión -->
+
+                    <div class="boton_cerrar_sesion" <?php if (!isset($_SESSION["username"])) {echo 'style="display: none";';} ?>>
                         <a href="../Server/cerrar_sesion.php" id="boton_cerrar_sesion">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-power" width="40" height="40" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M7 6a7.75 7.75 0 1 0 10 0" />
                                 <line x1="12" y1="4" x2="12" y2="12" />
                             </svg>
-        
                         </a>
-        
-        
                     </div>
-    
-                </ul>
-                
+                </ul>    
             </div>
         </div>
     </header>
