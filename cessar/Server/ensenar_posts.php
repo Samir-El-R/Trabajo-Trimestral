@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST['posts'])) {
  $usuario = $_SESSION['username'];
  $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
