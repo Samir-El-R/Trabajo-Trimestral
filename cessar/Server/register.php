@@ -8,8 +8,6 @@ if (isset($_POST['registrarse'])) {
     $correo = $_POST['email_signup'];
     $contrasena = $_POST['contrasena_signup'];
     $confirmar_contrasena = $_POST['confirmar_contrasena_signup'];
-    $fileName = $_FILES['file']['name'];
-    $fileType = $_FILES['file']['type'];
     $fecha = date('Y-m-d H:i:s');
     $imagen_Por_Defecto = 'perfil-por-defecto.png';
 
@@ -48,7 +46,9 @@ if (isset($_POST['registrarse'])) {
 
                 if (!$MyBBDD->numero_filas() > 0) {
 
-                    if ($fileName != null) {
+                    if ($_FILES['file']['name'] != null) {
+                        $fileName = $_FILES['file']['name'];
+                        $fileType = $_FILES['file']['type'];
                         $extension = pathinfo($fileName, PATHINFO_EXTENSION);
                         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
                         $nombre_imagen_perfil = 'perfil-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
