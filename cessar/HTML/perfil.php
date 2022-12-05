@@ -37,10 +37,11 @@ session_start();
       $info_nombre = $fila['nombre'];
       $info_usuario = $fila['usuario'];
       $info_fecha = $fila['fecha_creacion'];
+      $info_imagen = $fila['imagen_perfil'];
 
       echo ' <div class="container">
       <div class="perfil">
-        <img class="perfil-foto" src="#" alt="futura foto de usuario" />
+        <img class="perfil-foto" src="../imagen/img_perfil/'.$info_imagen.'" alt="futura foto de usuario" />
         <div class="titulo"> ';
       echo "<h1>";
       echo "Nombre ".$info_nombre . "  Apellido " . $info_apellido;

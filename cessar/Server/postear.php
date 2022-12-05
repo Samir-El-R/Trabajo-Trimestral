@@ -11,7 +11,7 @@ if (isset($_POST['publicar'])) {
     $fileType = $_FILES['file']['type'];
     $extension = pathinfo($fileName, PATHINFO_EXTENSION);
     $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-    $nombre_imagen = 'imagen-' . substr(str_shuffle($permitted_chars), 0, 10) . '.';
+    $nombre_imagen = 'post-img-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
     $nombre_imagen .= $extension;
 
     if (!empty($post) && strlen($titulo) > 10) {

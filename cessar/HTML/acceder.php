@@ -10,20 +10,20 @@
 </head>
 
 <body>
-   <?php
-//    Se importa el header
-       require 'header.php';
-       
-    ?>  
-      <section class="forms-section ">
+    <?php
+    //    Se importa el header
+    require 'header.php';
+
+    ?>
+    <section class="forms-section ">
 
         <!-- Formularios para inicio de sesión y registro -->
 
         <div class="forms">
 
-        <!-- Div del formulario para inicio de sesión,esta active para que aparezca por predeterminado -->
+            <!-- Div del formulario para inicio de sesión,esta active para que aparezca por predeterminado -->
 
-            <div class="form-wrapper is-active ">
+            <div class="form-wrapper  ">
                 <button type="button" class="switcher switcher-login">
                     Iniciar Sesión
                     <span class="underline"></span>
@@ -60,12 +60,12 @@
 
             <!-- Div del formulario pararegistro, por defecto esta en segundo plano -->
 
-            <div class="form-wrapper  ">
+            <div class="form-wrapper is-active  ">
                 <button type="button" class="switcher switcher-signup">
                     Registrarse
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" method="POST">
+                <form class="form form-signup"  method="post" enctype="multipart/form-data">
                     <fieldset>
 
                         <!-- Campo usuario -->
@@ -75,46 +75,63 @@
                             <input type="text" name="usuario_signup" id="usuario_signup" required>
                         </div>
 
-                         <!-- Campo nombre real -->
+                        <!-- Campo nombre real -->
 
                         <div class="input-block">
                             <label for="nombre_real">Nombre</label>
                             <input type="text" name="nombre_real" id="nombre_real">
                         </div>
 
-                         <!-- Campo apellidos -->
+                        <!-- Campo apellidos -->
 
                         <div class="input-block">
                             <label for="apellidos_signup">Apellidos</label>
                             <input type="text" name="apellidos_signup" id="apellidos_signup">
                         </div>
 
-                         <!-- Campo email -->
+                        <!-- Campo email -->
 
                         <div class="input-block">
                             <label for="email_signup">E-mail</label>
                             <input type="email" name="email_signup" id="email_signup" required>
                         </div>
 
-                         <!-- Campo contraseña -->
+                        <!-- Campo contraseña -->
 
                         <div class="input-block">
                             <label for="contrasena_signup">Contraseña</label>
                             <input type="password" name="contrasena_signup" id="contrasena_signup" required>
                         </div>
 
-                         <!-- Campo confirmar contraseña -->
+                        <!-- Campo confirmar contraseña -->
 
                         <div class="input-block">
                             <label for="confirmar_contrasena_signup">Confirmar Contraseña</label>
                             <input type="password" name="confirmar_contrasena_signup" id="confirmar_contrasena_signup" required>
                         </div>
+
+                        <div id="yourBtn">
+                            <div onclick="getFile()" class="uploader-text">
+                                Subir imagen Perfil
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-upload" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />
+                                <polyline points="9 15 12 12 15 15" />
+                                <line x1="12" y1="12" x2="12" y2="21" />
+                            </svg>
+                            <div style='   display: none;'>
+                            <input type="file" name="file" id="file"  value="upload" >
+                            </div>
+                        </div>
                     </fieldset>
-                    
+
                     <!-- Butones para enviar datos y resetear formulario -->
 
+                    <div class="div-btn-signup">
                     <button type="submit" name="registrarse" id="enviar_register" class="btn-signup">Registrarse</button>
                     <button type="reset" class="btn-signup">Limpiar</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -124,16 +141,27 @@
     ?>
 </body>
 
-        <!-- Script para dar primer plano al div que deseemos dependiendo de si hacemos click en "INICIAR SESIÓN" O "REGISTRARSE" -->
+<!-- Script para dar primer plano al div que deseemos dependiendo de si hacemos click en "INICIAR SESIÓN" O "REGISTRARSE" -->
 
-        <script>
-            const switchers = [...document.querySelectorAll('.switcher')]
-            switchers.forEach(item => {
-                item.addEventListener('click', function () {
-                    switchers.forEach(item => item.parentElement.classList.remove('is-active'))
-                    this.parentElement.classList.add('is-active')
-                })
-            })
-        </script>
-            
+<script>
+    const switchers = [...document.querySelectorAll('.switcher')]
+    switchers.forEach(item => {
+        item.addEventListener('click', function() {
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        })
+    })
+
+    function getFile() {
+        document.getElementById("file").click();
+    }
+
+    // function sub(obj) {
+    //     let file = obj.value;
+    //     let fileNamej = file.split("\\");
+    //     document.getElementById("yourBtn").innerHTML = fileNamej[fileName.length - 1];
+    //     // event.preventDefault();
+    // }
+</script>
+
 </html>
