@@ -10,10 +10,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
-        
-
-
-
         .bienvenida {
             font-weight: bolder;
             margin-top: 25px;
@@ -21,7 +17,8 @@ session_start();
             font-size: 30px;
             padding: 20px;
         }
-        .p_temas{
+
+        .p_temas {
             padding-top: 9px;
             background-color: #313131;
             display: flex;
@@ -36,7 +33,7 @@ session_start();
             background-color: #212121;
         }
 
-        main{
+        main {
             z-index: 0;
             display: flex;
             flex-direction: column;
@@ -64,7 +61,7 @@ session_start();
             width: 100%;
             height: 100%;
             text-align: center;
-            
+
 
         }
 
@@ -75,9 +72,10 @@ session_start();
         }
 
         .listas ul li {
-            list-style: none;    
+            list-style: none;
         }
-        .listas ul{
+
+        .listas ul {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -136,14 +134,15 @@ session_start();
             box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
         }
 
-            .ultimas_publicaciones{
-                background-color: #313131;
-                padding: 25px;
-                display: flex;
-                font-size: 25px;
-                font-weight: bolder;
-                justify-content: center;
-            }
+        .ultimas_publicaciones {
+            background-color: #313131;
+            padding: 25px;
+            display: flex;
+            font-size: 25px;
+            font-weight: bolder;
+            justify-content: center;
+        }
+
         /* inicio bloque post */
 
 
@@ -163,7 +162,7 @@ session_start();
             height: 80px;
             margin-left: 30px;
             width: 100%;
-            
+
             color: white;
             font-size: 25px;
         }
@@ -194,7 +193,8 @@ session_start();
             height: 60px;
             width: 70px;
         }
-        .imagen{
+
+        .imagen {
             height: 60px;
             width: 70px;
         }
@@ -220,55 +220,249 @@ session_start();
 
 
         <div class="postear">
-            <div class="p_temas"> <p>Elegir tema:</p></div>
+            <div class="p_temas">
+                <p>Elegir tema:</p>
+            </div>
             <div class="listas">
-                
-                <ul>
-                <div>
-                    <li>
-                        <form action="" method="post">
-                            <input name="general" type="submit" value="General" class="btn third">
 
-                        </form>
-                    </li>
-                </div>
+                <ul>
                     <div>
-                    <li>
-                        <form action="" method="post">
-                            <input name="rutinas" type="submit" value="Rutinas" class="btn third">
-                        </form>
-                    </li>
+                        <li>
+                            <form action="" method="post">
+                                <input name="general" type="submit" value="General" class="btn third">
+
+                            </form>
+                        </li>
                     </div>
                     <div>
-                    <li>
-                        <form action="" method="post">
-                            <input name="ciclos" type="submit" value="Ciclos" class="btn third">
-                        </form>
-                    </li>
+                        <li>
+                            <form action="" method="post">
+                                <input name="rutinas" type="submit" value="Rutinas" class="btn third">
+                            </form>
+                        </li>
                     </div>
                     <div>
-                    <li>
-                        <form action="" method="post">
-                            <input name="culturismo" type="submit" value="Culturismo" class="btn third">
-                        </form>
-                    </li>
+                        <li>
+                            <form action="" method="post">
+                                <input name="ciclos" type="submit" value="Ciclos" class="btn third">
+                            </form>
+                        </li>
                     </div>
                     <div>
-                    <li>
-                        <form action="" method="post">
-                            <input name="dietas" type="submit" value="Dietas" class="btn third">
-                        </form>
-                    </li>
+                        <li>
+                            <form action="" method="post">
+                                <input name="culturismo" type="submit" value="Culturismo" class="btn third">
+                            </form>
+                        </li>
                     </div>
-                    
+                    <div>
+                        <li>
+                            <form action="" method="post">
+                                <input name="dietas" type="submit" value="Dietas" class="btn third">
+                            </form>
+                        </li>
+                    </div>
+
                 </ul>
 
 
             </div>
-            <div class="ultimas_publicaciones"><h4>Últimas publicaciones:</h4></div>
+            <div class="ultimas_publicaciones">
+                <h4>Últimas publicaciones:</h4>
+            </div>
+
 
             <?php
-            if ($MyBBDD != false) {
+            echo '  <style>
+                            
+             /* inicio bloque post */
+     
+   
+     .titulo_autor{
+         padding-top: 35px;  
+         display:flex ;
+         justify-content: space-between;
+     }
+     .titulo{
+         height: 80px;
+         margin-left: 30px;
+         width:400px ; 
+         
+         color: white;
+         font-size: 25px;
+     }
+     .autor{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+         margin-right: 30px;
+         height: 100px;
+         width:150px ; 
+         color: white;
+     }
+     .tema{
+         
+         height: 30px;
+         margin-top:50px;
+         width:300px ; 
+         color: white;
+     }
+     .foto{
+         background-color: white;
+         height: 60px;
+         width: 70px;
+     }
+     
+     
+     
+         </style>';
+
+            $valor = true;
+            if (isset($_POST['general'])) {
+                $valor = false;
+                $MyBBDD->consulta("SELECT * FROM posts  order by post_fecha");
+                $cantidad = 0;
+                while ($fila = $MyBBDD->extraer_registro()) {
+                    if ($cantidad >= 5) {
+                        break;
+                    } else {
+                        $cantidad++;
+                        echo '<div class="columna">';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
+
+
+                        echo '</div>';
+                    }
+                }
+            }
+
+
+
+
+            if (isset($_POST['rutinas'])) {
+                $valor = false;
+                $MyBBDD->consulta("SELECT * FROM posts where post_tema = 'rutinas'  order by post_fecha");
+                $cantidad = 0;
+                while ($fila = $MyBBDD->extraer_registro()) {
+                    if ($cantidad >= 5) {
+                        break;
+                    } else {
+                        $cantidad++;
+                        echo '<div class="columna">';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
+
+
+                        echo '</div>';
+                    }
+                }
+            }
+
+
+
+            if (isset($_POST['ciclos'])) {
+                $valor = false;
+                $MyBBDD->consulta("SELECT * FROM posts where post_tema = 'ciclos'  order by post_fecha");
+                $cantidad = 0;
+                while ($fila = $MyBBDD->extraer_registro()) {
+                    if ($cantidad >= 5) {
+                        break;
+                    } else {
+                        $cantidad++;
+                        echo '<div class="columna">';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
+
+
+                        echo '</div>';
+                    }
+                }
+            }
+
+
+
+
+            if (isset($_POST['culturismo'])) {
+                $valor = false;
+                $MyBBDD->consulta("SELECT * FROM posts where post_tema = 'culturismo'  order by post_fecha");
+                $cantidad = 0;
+                while ($fila = $MyBBDD->extraer_registro()) {
+                    if ($cantidad >= 5) {
+                        break;
+                    } else {
+                        $cantidad++;
+                        echo '<div class="columna">';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
+
+
+                        echo '</div>';
+                    }
+                }
+            }
+
+
+
+            if (isset($_POST['dietas'])) {
+                $valor = false;
+                $MyBBDD->consulta("SELECT * FROM posts where post_tema = 'dietas'  order by post_fecha");
+                $cantidad = 0;
+                while ($fila = $MyBBDD->extraer_registro()) {
+                    if ($cantidad >= 5) {
+                        break;
+                    } else {
+                        $cantidad++;
+                        echo '<div class="columna">';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
+
+
+                        echo '</div>';
+                    }
+                }
+            }
+
+
+
+            // $MyBBDD != false;
+            if ($valor) {
                 $MyBBDD->consulta("SELECT * FROM posts order by post_fecha");
                 $cantidad = 0;
                 while ($fila = $MyBBDD->extraer_registro()) {
@@ -276,73 +470,27 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-
-                        echo '  <style>
-                            
-                            /* inicio bloque post */
-                    
-                    
-                    
-                    
-                    
-                        
-                    .titulo_autor{
-                        padding-top: 35px;  
-                        display:flex ;
-                        justify-content: space-between;
-                    }
-                    .titulo{
-                        height: 80px;
-                        margin-left: 30px;
-                        width:400px ; 
-                        
-                        color: white;
-                        font-size: 25px;
-                    }
-                    .autor{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        flex-direction: column;
-                        margin-right: 30px;
-                        height: 100px;
-                        width:150px ; 
-                        color: white;
-                    }
-                    .tema{
-                        
-                        height: 30px;
-                        margin-top:50px;
-                        width:300px ; 
-                        color: white;
-                    }
-                    .foto{
-                        background-color: white;
-                        height: 60px;
-                        width: 70px;
-                    }
-                    
-                    
-                    
-                        </style>';
                         echo '<div class="columna">';
-                            echo "<div class='titulo_autor'>";
-                            echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
+                        echo "<div class='titulo_autor'>";
+                        echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
 
-                            echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
-                            echo "<div class='autor'> <div class='foto'> 
-                            <img class='imagen' src='../imagen/img_publicacion/"  
-                            .$fila['post_imagen']. "'></div>";
-                            echo $fila['post_autor'];
-                            echo '</div>';
+                        echo "<div class='tema'>Tema : " . $fila['post_tema'] . '</div>';
+                        echo "<div class='autor'> <div class='foto'> 
+                            <img class='imagen' src='../imagen/img_publicacion/"
+                            . $fila['post_imagen'] . "'></div>";
+                        echo $fila['post_autor'];
+                        echo '</div>';
 
 
                         echo '</div>';
                     }
                 }
             }
+
+
+
             ?>
-        </div>  
+        </div>
     </main>
 </body>
 

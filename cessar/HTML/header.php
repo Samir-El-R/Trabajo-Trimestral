@@ -45,7 +45,7 @@
         }
 
         .nombre_logo{  
-           
+           cursor: pointer;
             justify-content: flex-end;
         }
         
@@ -163,8 +163,16 @@
                 </svg></div>
             </a>
                 
-                <div class="nombre_logo"><h3 class="titulo_logo">ZonaFitness</h3> </div>
-                
+                <div class="nombre_logo" id="logo"><h3 class="titulo_logo">ZonaFitness</h3> </div>
+                <script>
+                    let logo = document.getElementById("logo");
+                    logo.addEventListener("click",function () {
+                        location.href = "index.php";
+                        
+                    })
+
+                     
+                </script>
                     
             </div>
             <div class="menu_header">
@@ -202,7 +210,7 @@
                         } ?>>
                             <ul>
                                 <li>
-                                    <a href="../HTML/perfil.php" id="boton_acceder">Ir a perfil</a> 
+                                    <a href="../HTML/perfil.php" >Ir a perfil</a> 
                                 </li>
                                 <li>
                                     <a href="../Server/cerrar_sesion.php" id="boton_cerrar_sesion">Cerrar Sesión</a> 
@@ -210,18 +218,21 @@
                             </ul>
                         </div>
                         <script>
-                            
-                            document.getElementById("boton_acceder").onclick=function(){hover_on_out()}
-                            
-                           
-                            function hover_on_out(){
-                                if( document.getElementById("desplegable").style.visibility=="hidden"){
-                                    document.getElementById("desplegable").style.visibility="visible"; 
+                            let boton_acceder = document.getElementById("boton_acceder");
+                            let desplegable = document.getElementById("desplegable");
 
-                                }else{
-                                    document.getElementById("desplegable").style.visibility="hidden";
+                    
+                            boton_acceder.addEventListener("click",function () {
+        // desplegable.style.visibility = "visible";
+                                    if( desplegable.style.visibility=="hidden"){
+                                         desplegable.style.visibility="visible"; 
+
+                                     }else{
+                                         desplegable.style.visibility="hidden";
                                 }   
-                            }
+        
+      })
+  
                             
                         </script>
     

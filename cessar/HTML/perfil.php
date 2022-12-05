@@ -12,7 +12,7 @@ session_start();
   <title>Perfil</title>
 </head>
 
-<body id="body">
+<body>
 
 
 
@@ -142,8 +142,6 @@ session_start();
             </div>
           </div>
 
-          <!--<input type="posts" class="button" id="todos_mis_posts" value="Todos mis posts">  -->
-
 
           <div id="todos_mis_posts">
             <span class="button" > Todos mis posts</span>
@@ -155,11 +153,6 @@ session_start();
           </ul>
 
         </div>
-
-
-
-
-
 
 
 
@@ -175,7 +168,6 @@ session_start();
       $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
       $x = 1;
       $numero_filas = $MyBBDD->numero_filas();
-      echo $MyBBDD->numero_filas();
       for ($i = 0; $i < $numero_filas; $i++) {
         $fila = $MyBBDD->extraer_registro();
         if ($i == $numero_filas) {
@@ -220,20 +212,6 @@ let cerrar_post = document.getElementById("cerrar_post");
         contenedor_posts.style.visibility = "hidden";
           document.documentElement.setAttribute("style", "overflow-Y: hidden;");
       })
-
-      
-
-
-      
-// function muestra_oculta(id){
-// if (document.getElementById){ //se obtiene el id
-// var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
-// el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
-// }
-// }
-// window.onload = function(){/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
-// muestra_oculta('contenido');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
-// }
 
     </script>
 

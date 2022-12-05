@@ -15,6 +15,7 @@ if (true) {
     header("location: ../HTML/index.php");
   } else {
     // echo "<script> alert('la contraseña o el usuario son incorrectos')</script>";
+    header("location: ../HTML/acceder.php");
     // echo json_encode("no existe");
   }
 } else {
