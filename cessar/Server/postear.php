@@ -2,7 +2,7 @@
 
 include 'conectarse.php';
 if (isset($_POST['publicar'])) {
-    $autor = $_SESSION["username"];
+    $autor = $_SESSION["username"]["usuario"];
     $post = $_POST['post'];
     $tema = $_POST['temas'];
     $titulo = $_POST['post_titulo'];

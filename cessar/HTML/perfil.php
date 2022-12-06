@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,24 +31,22 @@ session_start();
     </style>
     ';
 
-      $usuario = $_SESSION['username'];
-      $MyBBDD->consulta("SELECT * FROM registro where usuario='$usuario'");
-      $fila = $MyBBDD->extraer_registro();
-      $info_apellido = $fila['apellido'];
-      $info_nombre = $fila['nombre'];
-      $info_usuario = $fila['usuario'];
-      $info_fecha = $fila['fecha_creacion'];
-      $info_imagen = $fila['imagen_perfil'];
+      $usuario = $_SESSION['username']['usuario'];
 
+      $info_apellido = $_SESSION['username']['apellido'];
+      $info_nombre = $_SESSION['username']['nombre'];
+      $info_usuario = $_SESSION['username']['usuario'];
+      $info_fecha = $_SESSION['username']['fecha'];
+      $info_imagen = $_SESSION['username']['imagen'];
       echo ' <div class="container">
       <div class="perfil">
-        <img class="perfil-foto" src="../imagen/img_perfil/'.$info_imagen.'" alt="futura foto de usuario" />
+        <img class="perfil-foto" src="../imagen/img_perfil/' . $info_imagen . '" alt="futura foto de usuario" />
         <div class="titulo"> ';
       echo "<h1>";
-      echo "Nombre ".$info_nombre . "  Apellido " . $info_apellido;
+      echo "Nombre " . $info_nombre . "  Apellido " . $info_apellido;
       echo "</h1>";
       echo '<h3 class="h3">';
-      echo "Usuario : ".$info_usuario;
+      echo "Usuario : " . $info_usuario;
       echo "</h3>";
       echo '</div>
       </div>
@@ -71,8 +70,7 @@ session_start();
 
       echo '<td >Cantidad de posts:</td>';
       echo '<td>';
-      echo $MyBBDD->numero_filas();
-      ;
+      echo $MyBBDD->numero_filas();;
       echo '</td> ';
       echo '  </tr>
     </table>';
@@ -96,22 +94,19 @@ session_start();
 
                   <p type="Contraseña nueva:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena" id="contrasena1"
-                      placeholder="Introduce las nueva contraseña">
+                    <input type="password" name="contrasena" id="contrasena1" placeholder="Introduce las nueva contraseña">
                   </p>
 
 
 
                   <p type="Confirmar nueva contraseña:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena2" id="contrasena2"
-                      placeholder="Confirma tu nueva contraseña">
+                    <input type="password" name="contrasena2" id="contrasena2" placeholder="Confirma tu nueva contraseña">
                   </p>
 
                   <div class="botones">
                     <div>
-                      <button type="submit" name="enviar" id="enviar_cambio_contrasena"
-                        class="btn-signup">Enviar</button>
+                      <button type="submit" name="enviar" id="enviar_cambio_contrasena" class="btn-signup">Enviar</button>
                     </div>
                     <div>
                       <button type="reset" class="btn-signup">Limpiar</button>
@@ -121,7 +116,7 @@ session_start();
                   if (isset($_POST['enviar'])) {
                     $contrasena_nueva = $_POST['contrasena'];
                     $contrasena_nueva_confirmacion = $_POST['contrasena2'];
-                    $usuario = $_SESSION['username'];
+                    $usuario = $_SESSION['username']['usuario'];
                     $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
 
                     if ($contrasena_nueva == $contrasena_nueva_confirmacion) {
@@ -145,7 +140,7 @@ session_start();
 
 
           <div id="todos_mis_posts">
-            <span class="button" > Todos mis posts</span>
+            <span class="button"> Todos mis posts</span>
           </div>
 
 
@@ -160,60 +155,56 @@ session_start();
     </div>
 
     <div id="contenedor_posts">
-      <div class="contenedor_posts" >
+      <div class="contenedor_posts">
 
-      <a class="cerrar_posts" id="cerrar_post" href="#">&times;</a>
+        <a class="cerrar_posts" id="cerrar_post" href="#">&times;</a>
 
-      <?php
-      $usuario = $_SESSION['username'];
-      $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
-      $x = 1;
-      $numero_filas = $MyBBDD->numero_filas();
-      for ($i = 0; $i < $numero_filas; $i++) {
-        $fila = $MyBBDD->extraer_registro();
-        if ($i == $numero_filas) {
-          break;
-        } else {
-          echo '<div class="columna">';
-          echo "<div class='titulo_autor'>";
-          echo "<div class='titulo'>Titulo del Post " . $x . "   " . $fila['post_titulo'] . '</div>';
+        <?php
+        $usuario = $_SESSION['username']['usuario'];
+        $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
+        $x = 1;
+        $numero_filas = $MyBBDD->numero_filas();
+        for ($i = 0; $i < $numero_filas; $i++) {
+          $fila = $MyBBDD->extraer_registro();
+          if ($i == $numero_filas) {
+            break;
+          } else {
+            echo '<div class="columna">';
+            echo "<div class='titulo_autor'>";
+            echo "<div class='titulo'>Titulo del Post " . $x . "   " . $fila['post_titulo'] . '</div>';
 
-          echo "<div class='tema'>Tema del post : " . $fila['post_tema'] . '</div>';
-          echo "<div class='autor'> <div class='foto'> 
+            echo "<div class='tema'>Tema del post : " . $fila['post_tema'] . '</div>';
+            echo "<div class='autor'> <div class='foto'> 
             <img class='imagen' src='../imagen/img_publicacion/"
-            . $fila['post_imagen'] . "'></div>";
-          echo $fila['post_autor'];
-          echo '</div>';
-          echo '</div>';
-          $x++;
-
+              . $fila['post_imagen'] . "'></div>";
+            echo $fila['post_autor'];
+            echo '</div>';
+            echo '</div>';
+            $x++;
+          }
         }
 
-      }
 
 
-
-      ?>
-</div >
+        ?>
+      </div>
     </div>
 
     <script>
-
       let boton_posts = document.getElementById('todos_mis_posts');
       let contenedor_posts = document.getElementById('contenedor_posts');
       let main = document.getElementsByTagName("body");
-let cerrar_post = document.getElementById("cerrar_post");
+      let cerrar_post = document.getElementById("cerrar_post");
 
-      boton_posts.addEventListener("click",function () {
+      boton_posts.addEventListener("click", function() {
         contenedor_posts.style.visibility = "visible";
-          document.documentElement.setAttribute("style", "overflow-Y: scroll;");
-      })
-  
-      cerrar_post.addEventListener("click",function () {
-        contenedor_posts.style.visibility = "hidden";
-          document.documentElement.setAttribute("style", "overflow-Y: hidden;");
+        document.documentElement.setAttribute("style", "overflow-Y: scroll;");
       })
 
+      cerrar_post.addEventListener("click", function() {
+        contenedor_posts.style.visibility = "hidden";
+        document.documentElement.setAttribute("style", "overflow-Y: hidden;");
+      })
     </script>
 
   </main>

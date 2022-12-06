@@ -23,7 +23,7 @@ session_start();
             <?php
             if (isset($_SESSION["username"])) {
 
-                echo "Bienvenido " . $_SESSION["username"] . "!!";
+                echo "Bienvenido " . $_SESSION["username"]['usuario'] . "!!";
             }
             ?>
         </div>  

@@ -12,7 +12,13 @@
 <body>
     <?php
     //    Se importa el header
+  
     require 'header.php';
+    if (!isset($_SESSION["username"])) {
+        $_SESSION["username"] = array();
+    } else {
+        header("location: ../HTML/index.php");
+    }
 
     ?>
     <section class="forms-section ">
@@ -65,7 +71,7 @@
                     Registrarse
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup"  method="post" enctype="multipart/form-data">
+                <form class="form form-signup" method="post" enctype="multipart/form-data">
                     <fieldset>
 
                         <!-- Campo usuario -->
@@ -121,7 +127,7 @@
                                 <line x1="12" y1="12" x2="12" y2="21" />
                             </svg>
                             <div style='   display: none;'>
-                            <input type="file" name="file" id="file"  value="upload" >
+                                <input type="file" name="file" id="file" value="upload">
                             </div>
                         </div>
                     </fieldset>
@@ -129,8 +135,8 @@
                     <!-- Butones para enviar datos y resetear formulario -->
 
                     <div class="div-btn-signup">
-                    <button type="submit" name="registrarse" id="enviar_register" class="btn-signup">Registrarse</button>
-                    <button type="reset" class="btn-signup">Limpiar</button>
+                        <button type="submit" name="registrarse" id="enviar_register" class="btn-signup">Registrarse</button>
+                        <button type="reset" class="btn-signup">Limpiar</button>
                     </div>
                 </form>
             </div>
