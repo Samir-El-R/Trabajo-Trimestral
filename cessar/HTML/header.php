@@ -206,6 +206,10 @@
         <div class="menu_header">
             <ul>
                 <!-- Botones del header,dependiendo de si esta registrado o no un usuario se mostrarán -->
+
+
+                <!-- Boton acceder -->
+
                 <div class="botones_header" <?php if (isset($_SESSION["username"])) {
                                                 echo 'style="display: none;"';
                                             } ?>>
@@ -214,7 +218,7 @@
                     </li>
                 </div>
 
-               
+               <!-- Boton postear -->
 
                 <div class="botones_header" <?php if (!isset($_SESSION["username"])) {
                                                 echo 'style="display: none;"';
@@ -224,19 +228,15 @@
                     </li>
                 </div>
 
-                <div>
-                    <div class="botones_header-imagen"  <?php if (!isset($_SESSION["username"])) {
-                                                                        echo 'style="display: none;"';
-                                                                    } ?>>
-                        <li>
-                        
-                                <img  id="boton_acceder" class="imagen_usuario_header--img" src="../imagen/img_perfil/<?php echo $_SESSION["username"]["imagen"]; ?>" alt="">
+                <!-- Boton desplegable -->
 
+                <div>
+                    <div class="botones_header-imagen"  <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
+                        <li>
+                            <img  id="boton_acceder" class="imagen_usuario_header--img" src="../imagen/img_perfil/<?php echo $_SESSION["username"]["imagen"]; ?>" alt="">
                         </li>
                     </div>
-                    <div class="desplegable" id="desplegable" <?php if (!isset($_SESSION["username"])) {
-                                                                    echo 'style="display: none;"';
-                                                                } ?>>
+                    <div class="desplegable" id="desplegable" <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
                         <ul>
                             <li>
                                 <a href="../HTML/perfil.php">Ir a perfil</a>

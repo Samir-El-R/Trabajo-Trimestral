@@ -2,6 +2,9 @@
 
 include 'conectarse.php';
 if (isset($_POST['publicar'])) {
+
+// Recogida de datos al darle a publicar
+
     $autor = $_SESSION["username"]["usuario"];
     $post = $_POST['post'];
     $tema = $_POST['temas'];
@@ -14,9 +17,17 @@ if (isset($_POST['publicar'])) {
     $nombre_imagen = 'post-img-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
     $nombre_imagen .= $extension;
 
+
+// Pequeña validación para publicar(por longitud de tema y post)
+
     if (!empty($post) && strlen($titulo) > 10) {
         if (!empty($titulo) && strlen($titulo) > 5) {
+
+            // Validación por tipo de imagen
+
             if ($fileType == "image/jpeg" || $fileType == "image/png") {
+
+                // Mover la imagen a la carpeta de imagen y query para introducir los datos en la BBDD
 
                 move_uploaded_file($_FILES['file']['tmp_name'], "../imagen/img_publicacion/$nombre_imagen");
 

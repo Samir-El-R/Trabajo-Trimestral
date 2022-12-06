@@ -2,7 +2,7 @@
 session_start();
 include 'conectarse.php';
 
-// query para borrar la fila de el usuario en la BBDD
+// Query para borrar la fila de el usuario en la BBDD
 
 $MyBBDD->consulta("DELETE FROM registro ");
 

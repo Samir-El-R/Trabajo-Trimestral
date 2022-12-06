@@ -2,6 +2,9 @@
 include 'conectarse.php';
 if (isset($_POST['registrarse'])) {
 
+
+    // recogida de datos al pulsar registrarse
+
     $usuario = $_POST['usuario_signup'];
     $nombre  = $_POST['nombre_real'];
     $apellidos= $_POST['apellidos_signup'];
@@ -10,6 +13,8 @@ if (isset($_POST['registrarse'])) {
     $confirmar_contrasena = $_POST['confirmar_contrasena_signup'];
     $fecha = date('Y-m-d H:i:s');
     $imagen_Por_Defecto = 'perfil-por-defecto.png';
+
+    // mensajes por si hay algun error si estan vacios o no pasan filtros
 
     if (empty($usuario)) {
         echo "Introduzca su usuario!";
@@ -37,6 +42,8 @@ if (isset($_POST['registrarse'])) {
         echo "La contraseña debe tener al menos 8 caracteres !";
     } else {
         if ($confirmar_contrasena == $contrasena) {
+
+            // Comprobacion de que los valor introducidos no se puedan duplicar en la BBDD
 
             $MyBBDD->consulta("SELECT * FROM registro where email = '$correo'");
 

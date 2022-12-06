@@ -326,7 +326,7 @@ session_start();
             $valor = true;
             if (isset($_POST['general'])) {
                 $valor = false;
-                $MyBBDD->consulta("SELECT * FROM posts  order by post_fecha");
+                $MyBBDD->consulta("SELECT * FROM posts where post_tema = 'general'  order by post_fecha");
                 $cantidad = 0;
                 while ($fila = $MyBBDD->extraer_registro()) {
                     if ($cantidad >= 5) {
