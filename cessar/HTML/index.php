@@ -186,7 +186,7 @@ session_start();
             margin-left: 35%;
             width: 300px;
             color: white;
-        } 
+        }
 
         .foto {
             background-color: white;
@@ -215,15 +215,17 @@ session_start();
         <div class="bienvenida">
             <?php
             if (isset($_SESSION["username"])) {
-                echo "Bienvenido " . $_SESSION["username"]["usuario"]. "!!";
+                echo "Bienvenido " . $_SESSION["username"]["usuario"] . "!!";
             }
             ?>
         </div>
 
-            <!-- Bloque de posts donde se dan unas opciones de filtro y se mostraran más abajo -->
+        <!-- Bloque de posts donde se dan unas opciones de filtro y se mostraran más abajo -->
 
         <div class="postear">
-            <div class="p_temas"> <p>Elegir tema:</p> </div>
+            <div class="p_temas">
+                <p>Elegir tema:</p>
+            </div>
             <div class="listas">
                 <ul>
 
@@ -333,6 +335,9 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+        
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
+               
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -343,9 +348,8 @@ session_start();
                             . $fila['post_imagen'] . "'></div>";
                         echo $fila['post_autor'];
                         echo '</div>';
-
-
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
@@ -362,6 +366,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -372,9 +377,8 @@ session_start();
                             . $fila['post_imagen'] . "'></div>";
                         echo $fila['post_autor'];
                         echo '</div>';
-
-
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
@@ -390,6 +394,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -403,6 +408,7 @@ session_start();
 
 
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
@@ -419,6 +425,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -429,9 +436,8 @@ session_start();
                             . $fila['post_imagen'] . "'></div>";
                         echo $fila['post_autor'];
                         echo '</div>';
-
-
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
@@ -447,6 +453,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -457,9 +464,8 @@ session_start();
                             . $fila['post_imagen'] . "'></div>";
                         echo $fila['post_autor'];
                         echo '</div>';
-
-
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
@@ -472,6 +478,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
+                        echo "<a href='../Server/mostrar_post.php?variable=". $fila['post_id'] ."' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -483,11 +490,13 @@ session_start();
                         echo $fila['post_autor'];
                         echo '</div>';
                         echo '</div>';
+                        echo '</a>';
                     }
                 }
             }
-            ?>
+                ?>
         </div>
     </main>
 </body>
+
 </html>

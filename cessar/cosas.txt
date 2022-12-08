@@ -1,13 +1,5 @@
-crear pagina posts[importante]
-dar estilo a postear
 
-
-
-
-
-
-
-
+dar estilo a postear y pagina post 
 
 
 
@@ -21,3 +13,4 @@ añadir en la pagina perfil ver imagen y cambio de imagen[muy opcional]
 
 comentar todo
 crear memoria
+
