@@ -20,7 +20,7 @@ if (true) {
     $_SESSION["username"]["usuario"] = $fila['usuario'];
     $_SESSION["username"]["imagen"] = $fila['imagen_perfil'];
     $_SESSION["username"]["nombre"] = $fila['nombre'];
-    $_SESSION["username"]["apellido"] = $fila['apellidos'];
+    $_SESSION["username"]["apellido"] = $fila['apellido'];
     $_SESSION["username"]["fecha"] = $fila['fecha_creacion'];
     $_SESSION["username"]["correo"] = $fila['email'];
     
@@ -30,6 +30,7 @@ if (true) {
   } else {
 
     // Si no existe el usuario introducido se mantiene en la pagina de inicio sesión
+    
 
     header("location: ../HTML/acceder.php");
   }

@@ -17,29 +17,29 @@ if (isset($_POST['registrarse'])) {
     // mensajes por si hay algun error si estan vacios o no pasan filtros
 
     if (empty($usuario)) {
-        echo "Introduzca su usuario!";
+        echo '<script> alert("Introduzca su usuario!"); </script>';
     } else if (!ctype_alnum($usuario)) {
-        echo "El usuario solo debe tener letras y numeros!";
+        echo '<script> alert("El usuario solo debe tener letras y numeros!"); </script>';
     } else if (empty($correo)) {
-        echo "Introduzca su correo!";
+        echo '<script> alert("Introduzca su correo!"); </script>';
     } else if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        echo "El correo no es valido!";
+        echo '<script> alert("El correo no es valido!"); </script>';
     } else if (empty($nombre)) {
-        echo "Introduzca su nombre!";
+        echo '<script> alert("Introduzca su nombre!"); </script>';
     } else if (!ctype_alpha($nombre)) {
-        echo "Solamente letras en elnombre!";
+        echo '<script> alert("Solamente letras en el nombre!"); </script>';
     } else if (empty($apellidos)) {
-        echo "Introduzca sus apellidos!";
+        echo '<script> alert("Introduzca sus apellidos!"); </script>';;
     } else if (!ctype_alpha($nombre)) {
-        echo "Solamente letras en el apellido!";
+        echo '<script> alert("Solamente letras en el apellido!"); </script>';;
     } else if (empty($contrasena)) {
-        echo "Introduzca sus contraseña !";
+        echo '<script> alert("Introduzca sus contraseña !"); </script>';;
     } else if (strlen($contrasena) < 8) {
-        echo "La contraseña debe tener al menos 8 caracteres !";
+        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';;
     } else if (empty($confirmar_contrasena)) {
-        echo "Introduzca sus contraseña !";
+        echo '<script> alert("Introduzca sus contraseña !"); </script>';;
     } else if (strlen($confirmar_contrasena) < 8) {
-        echo "La contraseña debe tener al menos 8 caracteres !";
+        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';;
     } else {
         if ($confirmar_contrasena == $contrasena) {
 
@@ -69,9 +69,9 @@ if (isset($_POST['registrarse'])) {
 
                             if ($MyBBDD->numero_filas() > 0) {
 
-                                echo "registrado";
+                                echo '<script> alert("Usuario Registrado"); </script>';
                             } else {
-                                echo "Hay un error en la base de datos";
+                                echo '<script> alert("Hay un error en la base de datos"); </script>';
                             }
                         } else {
 
@@ -84,19 +84,19 @@ if (isset($_POST['registrarse'])) {
 
                         if ($MyBBDD->numero_filas() > 0) {
 
-                            echo "registrado";
+                            echo '<script> alert("Usuario Registrado"); </script>';
                         } else {
-                            echo "Hay un error en la base de datos";
+                            echo '<script> alert("Hay un error en la base de datos"); </script>';
                         }
                     }
                 } else {
-                    echo "EL usuario existe";
+                    echo '<script> alert("EL usuario existe"); </script>';
                 }
             } else {
-                echo "EL correo ya existe";
+                echo '<script> alert("EL correo ya existe"); </script>';
             }
         } else {
-            echo "Las contraseñas no son iguales";
+            echo '<script> alert("Las contraseñas no son iguales"); </script>';
         }
     }
 }

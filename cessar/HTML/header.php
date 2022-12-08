@@ -210,33 +210,53 @@
 
                 <!-- Boton acceder -->
 
-                <div class="botones_header" <?php if (isset($_SESSION["username"])) {
+                <div class="botones_header" id="acceder" <?php if (isset($_SESSION["username"])) {
                                                 echo 'style="display: none;"';
                                             } ?>>
                     <li>
                         <a href="../HTML/acceder.php" id="boton_iniciar_sesion">Acceder</a>
                     </li>
                 </div>
+                <script>
+                let acceder= document.getElementById("acceder");
+                acceder.addEventListener("click", function() {
+                    location.href = "acceder.php";
+                })
+            </script>
 
                <!-- Boton postear -->
 
-                <div class="botones_header" <?php if (!isset($_SESSION["username"])) {
+                <div class="botones_header" id="postear" <?php if (!isset($_SESSION["username"])) {
                                                 echo 'style="display: none;"';
                                             } ?>>
                     <li>
                         <a href="postear.php" id="boton_postear">Postear</a>
                     </li>
                 </div>
+                <script>
+                let postear= document.getElementById("postear");
+                postear.addEventListener("click", function() {
+                    location.href = "postear.php";
+                })
+            </script>
 
                 <!-- Boton desplegable -->
 
-                <div>
-                    <div class="botones_header-imagen"  <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
+                <div  id="perfil"<?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
+                    <div class="botones_header"  >
                         <li>
-                            <img  id="boton_acceder" class="imagen_usuario_header--img" src="../imagen/img_perfil/<?php echo $_SESSION["username"]["imagen"]; ?>" alt="">
+                            <!-- <img  id="boton_acceder" class="imagen_usuario_header--img" src="../imagen/img_perfil/" alt=""> -->
+                            <a href="perfil.php">Perfil</a>
                         </li>
-                    </div>
-                    <div class="desplegable" id="desplegable" <?php if (!isset($_SESSION["username"])) {echo 'style="display: none;"';} ?>>
+                        </div>
+                        <script>
+                let perfil= document.getElementById("perfil");
+                perfil.addEventListener("click", function() {
+                    location.href = "perfil.php";
+                })
+            </script>
+                
+                    <!-- <div class="desplegable" id="desplegable" >
                         <ul>
                             <li>
                                 <a href="../HTML/perfil.php">Ir a perfil</a>
@@ -245,11 +265,14 @@
                                 <a href="../Server/cerrar_sesion.php" id="boton_cerrar_sesion">Cerrar Sesión</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> 
+                </div> -->
+
+                         
 
                     <!-- Script para ocultar o mostrar el menu desplegable de perfil -->
 
-                    <script>
+                    <!-- <script>
                         let boton_acceder = document.getElementById("boton_acceder");
                         let desplegable = document.getElementById("desplegable");
                         boton_acceder.addEventListener("click", function() {
@@ -259,7 +282,7 @@
                                 desplegable.style.visibility = "hidden";
                             }
                         })
-                    </script>
+                    </script> -->
                 </div>
 
                 <!-- Svg de cerrar sesión, es un enlace a cerrar_sesion.php donde se acaba la sesión -->

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Acceder</title>
     <link rel="stylesheet" href="../Css/style_Register_Login.css">
 </head>
 
@@ -64,7 +64,7 @@
             </div>
 
 
-            <!-- Div del formulario pararegistro, por defecto esta en segundo plano -->
+            <!-- Div del formulario para registro, por defecto esta en segundo plano -->
 
             <div class="form-wrapper is-active  ">
                 <button type="button" class="switcher switcher-signup">
@@ -115,6 +115,7 @@
                             <label for="confirmar_contrasena_signup">Confirmar Contraseña</label>
                             <input type="password" name="confirmar_contrasena_signup" id="confirmar_contrasena_signup" required>
                         </div>
+                        <!-- Campo para subir la imagen -->
 
                         <div id="yourBtn">
                             <div onclick="getFile()" class="uploader-text">
@@ -132,7 +133,7 @@
                         </div>
                     </fieldset>
 
-                    <!-- Butones para enviar datos y resetear formulario -->
+                    <!-- Botones para enviar datos y resetear formulario -->
 
                     <div class="div-btn-signup">
                         <button type="submit" name="registrarse" id="enviar_register" class="btn-signup">Registrarse</button>
