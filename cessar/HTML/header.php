@@ -53,7 +53,7 @@
         min-height: 30px;
     }
 
-    svg {
+    .svg {
         width: 40px;
         height: 40px;
     }
@@ -174,7 +174,8 @@
         <!-- svg del logo que sirve para volver a la página principal -->
 
         <div class="text_logo"> <a href="../HTML/index.php">
-                <div class="imagen_logo"><svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" version="1.1" viewBox="0 0 1062 1062" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <div class="imagen_logo">
+                    <svg class="svg" height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;" version="1.1" viewBox="0 0 1062 1062" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <circle cx="531.308" cy="531.308" id="circle6" r="531.308" style="fill:rgb(37,183,211);" />
                         <rect height="55.6341" style="fill:rgb(205,205,205);" width="885.051" x="88.7824" y="503.491" />
                         <g>
@@ -291,7 +292,7 @@
                                                         echo 'style="display: none";';
                                                     } ?>>
                     <a href="../Server/cerrar_sesion.php" id="boton_cerrar_sesion">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-power" width="40" height="40" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="svg icon icon-tabler icon-tabler-power" width="40" height="40" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M7 6a7.75 7.75 0 1 0 10 0" />
                             <line x1="12" y1="4" x2="12" y2="12" />
