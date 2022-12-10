@@ -1,0 +1,258 @@
+
+:root {
+    --light-grey: #f1f1f1;
+    --dark-grey: #dedede;
+    --light-blue: #d5e5ee;
+    --dark-blue: #5590cc;
+    --font-red: #cc3300;
+    --font-blue: #000040;
+    --border-grey: #d1d1d1;
+}
+
+body {
+    background-color: #313131;
+}
+
+.foto {
+    background-color: white;
+    height: 60px;
+    width: 70px;
+}
+
+.imagen {
+    height: 60px;
+    width: 70px;
+}
+
+
+
+
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.general {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+@media (min-width: 1200px) {
+    .general {
+        margin: 8px calc(50% - 592px);
+    }
+}
+
+.post {
+    display: grid;
+    margin-top: .5rem;
+    background-color: #1f1c1c;
+    color: white;
+    
+}
+
+.post__first {
+    margin-top: 0;
+}
+
+.post__last {
+    margin-bottom: .5rem;
+}
+
+@media (min-width: 768px) {
+    .post {
+        grid-template-columns: 160px 1fr;
+    }
+}
+
+
+.post__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    padding: .5rem;
+    border: 1px solid var(--dark-grey);
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .post__info {
+        grid-column: 1 / -1;
+    }
+}
+
+.post__info__date::before {
+    content: url('https://st.forocoches.com/foro/images/statusicon/post_old.gif');
+    position: relative;
+    left: -5px;
+}
+
+.post__info__date {
+    text-align: left;
+    padding-left: .5rem;
+}
+
+.post__info__post-id {
+    text-align: right;
+    padding-right: .5rem;
+}
+
+
+.post__author {
+    background: rgb(112, 112, 112);
+    display: grid;
+    grid-gap: .3rem;
+    grid-template-columns: 4rem 2fr 3fr;
+    grid-template-areas:
+        "avatar username join"
+        "avatar rank posts";
+    padding: .4rem;
+    align-items: center;
+    border: 1px solid var(--dark-grey);
+}
+
+@media (min-width: 768px) {
+    .post__author {
+        display: block;
+        text-align: center;
+    }
+
+    .post__author>* {
+        margin-bottom: .5rem;
+    }
+}
+
+.post__author__username {
+    grid-area: username;
+}
+
+.post__author__username a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.post__author__username a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+.post__author__rank {
+    grid-area: rank;
+}
+
+.post__author__avatar {
+    grid-area: avatar;
+    text-align: right;
+}
+
+.post__author__avatar img {
+    max-height: 4rem;
+    max-width: 4rem;
+}
+
+@media (min-width: 768px) {
+    .post__author__avatar {
+        text-align: center;
+    }
+
+    .post__author__avatar img {
+        max-height: 8rem;
+        max-width: 8rem;
+    }
+}
+
+.post__author__join {
+    grid-area: join;
+    text-align: right;
+}
+
+.post__author__posts {
+    grid-area: posts;
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+
+    .post__author__join,
+    .post__author__posts {
+        text-align: center;
+    }
+}
+
+
+.post__message {
+    border: 1px solid var(--dark-grey);
+    padding: .5rem;
+    font-size: calc(1rem + .25vw);
+}
+
+.post__message__options {
+    text-align: right;
+}
+
+
+.thread__quick-reply {
+    background: var(--dark-grey);
+    margin-top: 1rem;
+    text-align: center;
+    border: 1px solid var(--dark-grey);
+}
+
+@media (min-width: 768px) {
+    .thread__quick-reply {
+        width: 80%;
+        margin: 1rem auto;
+    }
+}
+
+.thread__quick-reply>* {
+    padding: .5rem;
+}
+
+.thread__quick-reply__title {
+    background: var(--light-blue);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid var(--dark-grey);
+}
+
+.thread__quick-reply__options {
+    display: grid;
+    grid-gap: .5rem;
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    .thread__quick-reply__options {
+        display: block;
+    }
+}
+
+.thread__quick-reply__options button {
+    font-size: 1.1rem;
+}
+
+.thread__quick-reply__editor textarea {
+    width: 100%;
+    height: 8rem;
+}
+
+@media (min-width: 768px) {
+    .thread__quick-reply__editor label {
+        display: block;
+    }
+
+    .thread__quick-reply__editor textarea {
+        width: 75%;
+        height: 12rem;
+    }
+}
