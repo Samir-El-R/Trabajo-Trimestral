@@ -13,3 +13,7 @@ $MyBBDD->consulta("DELETE FROM registro where usuario='$usuario'");
 // Redirección a pagina principal
 
 header("location: ../HTML/index.php");
+<<<<<<< Updated upstream
+=======
+?>
+>>>>>>> Stashed changes

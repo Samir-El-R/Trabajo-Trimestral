@@ -44,7 +44,12 @@
     $user="root";
     $password="";
     $dbname="foro";
+<<<<<<< Updated upstream
     $port=3306;
+=======
+    $port=14000;
+    // $port=3306;
+>>>>>>> Stashed changes
     $socket="";
 
     $MyBBDD = new BBDD($host, $user, $password, $dbname, $port, $socket);
