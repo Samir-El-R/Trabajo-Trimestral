@@ -286,7 +286,7 @@ $post_fecha = $fila['post_fecha'];
             background: #9201A8;
         }
         .imagen_post{
-            width: 70px;
+            width: 100px;
         }
     </style>
     <?php
