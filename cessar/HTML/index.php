@@ -162,7 +162,6 @@ session_start();
             height: 80px;
             margin-left: 30px;
             width: 100%;
-
             color: white;
             font-size: 25px;
         }
