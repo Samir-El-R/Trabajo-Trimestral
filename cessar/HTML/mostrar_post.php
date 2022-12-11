@@ -231,10 +231,10 @@ $post_fecha = $fila['post_fecha'];
         <section id="app">
             <div class="container">
 
-                <form action="" method="post">
+                <form id="miFormulario" action="" method="post">
                     <div class="col-6">
                         <textarea type="text" name='comentario' placeholder="Escribe un comentario"></textarea>
-                        <input type="submit" class='primaryContained' name="comentar" value="comentar">
+                        <input type="submit" class='primaryContained' id="comentario" name="comentar" onclick="miFuncion()" value="comentar">
 
                     </div>
                 </form>
@@ -401,6 +401,7 @@ $post_fecha = $fila['post_fecha'];
         if (!empty($comentario) && strlen($comentario) > 5) {
 
             $MyBBDD->consulta("INSERT INTO comentarios (contenido, fecha, post_ref, coment_autor) values ('$comentario','$fecha','$variable','$usuario')");
+            echo("<meta http-equiv='refresh' content='1'>");
         } else {
             echo '<script>alert("En comentario deben ser minimo 5 caracteres")</script>';
         }

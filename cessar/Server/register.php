@@ -29,17 +29,17 @@ if (isset($_POST['registrarse'])) {
     } else if (!ctype_alpha($nombre)) {
         echo '<script> alert("Solamente letras en el nombre!"); </script>';
     } else if (empty($apellidos)) {
-        echo '<script> alert("Introduzca sus apellidos!"); </script>';;
+        echo '<script> alert("Introduzca sus apellidos!"); </script>';
     } else if (!ctype_alpha($nombre)) {
-        echo '<script> alert("Solamente letras en el apellido!"); </script>';;
+        echo '<script> alert("Solamente letras en el apellido!"); </script>';
     } else if (empty($contrasena)) {
-        echo '<script> alert("Introduzca sus contraseña !"); </script>';;
+        echo '<script> alert("Introduzca sus contraseña !"); </script>';
     } else if (strlen($contrasena) < 8) {
-        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';;
+        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';
     } else if (empty($confirmar_contrasena)) {
-        echo '<script> alert("Introduzca sus contraseña !"); </script>';;
+        echo '<script> alert("Introduzca sus contraseña !"); </script>';
     } else if (strlen($confirmar_contrasena) < 8) {
-        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';;
+        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';
     } else {
         if ($confirmar_contrasena == $contrasena) {
 

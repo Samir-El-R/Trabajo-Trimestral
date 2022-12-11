@@ -9,7 +9,7 @@ $_SESSION["username"] = array();
 $usuario = $_POST['usuario_login'];
 $contrasena = $_POST['contrasena_login'];
 
-if (true) {
+if (!empty($usuario) && ctype_alnum($usuario) && !empty($contrasena)) {
   $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario' AND contrasena = '$contrasena'");
   
   if ($MyBBDD->numero_filas() > 0) {
