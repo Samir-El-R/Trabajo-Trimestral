@@ -116,7 +116,7 @@ $post_fecha = $fila['post_fecha'];
                 echo ($post_contenido);
 
                 if ($post_imagen != 'NULL') {
-                    echo " <img src='../imagen/img_publicacion/" . $post_imagen . "'>  ";
+                    echo " <img  class='imagen_post' src='../imagen/img_publicacion/" . $post_imagen . "'>  ";
                 }
 
 
@@ -284,6 +284,9 @@ $post_fecha = $fila['post_fecha'];
 
         .primaryContained:hover {
             background: #9201A8;
+        }
+        .imagen_post{
+            width: 70px;
         }
     </style>
     <?php
