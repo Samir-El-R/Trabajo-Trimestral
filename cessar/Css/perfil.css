@@ -75,7 +75,7 @@ a {
 
 
 
-/* pop up*/
+/* INICIO POP UP CAMBIO DE CONTRASEÑA*/
 
 
 
@@ -189,9 +189,6 @@ margin: 80px 0;
 
 
 
-
-
-
 .form {
     width: 340px;
     height: 440px;
@@ -246,6 +243,7 @@ input:focus {
     justify-content: space-around;
 }
 
+
 button {
     float: right;
     padding: 8px 12px;
@@ -266,9 +264,120 @@ button:hover {
 
 
 
-/* FIN POP UP */
+/* FIN POP UP CAMBIO DE CONTRASEÑA*/
 
+/* INICIO POP UP CAMBIO DE IMG */
+.button_img {
+    font-size: 1em;
+    padding: 10px;
+    color: rgb(47, 42, 42);
+    /* margin-top: 12px; */
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        line-height: 24px;
+        margin-right: 50px;
+        border-radius: 10px;
+    /* border-radius: 20px/50px; */
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    transition: all 0.3s ease-out;
+}
 
+.button_img:hover {
+    box-shadow: #FFF 0px 0px 6px, #FFF 0px 0px 4px, #FFF 0px 0px 5px, #FF2D95 0px 0px 5px, #FF2D95 0px 0px 10px, #FF2D95 0px 0px 10px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 25px;
+    background: -webkit-gradient(linear, left top, right top, from #7f00ff, to(#e100ff));
+    background: linear-gradient(to right, #7f00ff, #e100ff);
+    color: rgb(255, 255, 255);
+    /* background: #06D85F;
+    border: 2px solid #06D85F; */
+}
+
+.overlay_img {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay_img:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup_img {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup_img h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup_img .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup_img .close:hover {
+    color: #06D85F;
+}
+
+.popup_img .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .box_img {
+        width: 70%;
+    }
+
+    .popup_img {
+        width: 70%;
+    }
+}
+
+.botones_img {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.button__img {
+    font-weight: bolder;
+    margin-right: 20px;
+    border: none;
+    background: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+.button__img:hover {
+    background: grey;
+}
+/* FIN POPUP CAMBIO DE IMG */
 
 
 

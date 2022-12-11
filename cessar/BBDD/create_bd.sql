@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS registro (
   fecha_creacion DATETIME NOT NULL,
   email varchar(255) not null unique,
   contrasena varchar(255),
-  -- imagen_perfil varchar(255),
+  imagen_perfil varchar(255),
   PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS posts (

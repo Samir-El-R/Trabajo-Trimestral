@@ -73,8 +73,7 @@ session_start();
 
       echo '<td >Cantidad de posts:</td>';
       echo '<td>';
-      echo $MyBBDD->numero_filas();
-      ;
+      echo $MyBBDD->numero_filas();;
       echo '</td> ';
       echo '  </tr>
     </table>';
@@ -98,22 +97,19 @@ session_start();
 
                   <p type="Contraseña nueva:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena" id="contrasena1"
-                      placeholder="Introduce las nueva contraseña">
+                    <input type="password" name="contrasena" id="contrasena1" placeholder="Introduce las nueva contraseña">
                   </p>
 
 
 
                   <p type="Confirmar nueva contraseña:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena2" id="contrasena2"
-                      placeholder="Confirma tu nueva contraseña">
+                    <input type="password" name="contrasena2" id="contrasena2" placeholder="Confirma tu nueva contraseña">
                   </p>
 
                   <div class="botones">
                     <div>
-                      <button type="submit" name="enviar" id="enviar_cambio_contrasena"
-                        class="btn-signup">Enviar</button>
+                      <button type="submit" name="enviar" id="enviar_cambio_contrasena" class="btn-signup">Enviar</button>
                     </div>
                     <div>
                       <button type="reset" class="btn-signup">Limpiar</button>
@@ -150,16 +146,83 @@ session_start();
             <span class="button"> Todos mis posts</span>
           </div>
 
+          <!-- Cambiar imagen de perfil  -->
 
-         <div> <a class="button" href="">Cambiar imagen de perfil</a></div>
+          <div class="box_img">
+            <a class="button" href="#popup_img">Cambiar imagen de perfil </a>
+          </div>
+          <div id="popup_img" class="overlay_img">
+            <div class="popup_img">
+              <h2>Cambiar Imagen</h2>
+              <a class="close" href="#">&times;</a>
+              <div class="content">
 
-             
-          
 
-            <div class="borrar_cuenta"> <span><a class="button" href="../Server/borrar_cuenta.php">Borrar cuenta</a></span></div>
-           
+                <form action="" method="POST" enctype="multipart/form-data">
 
-   
+                  <p type="Selecciona la imagen:" class="parrafo">
+                    <br>
+
+                  <div onclick="getFile()" class="button__img">
+                    Subir imagen Perfil
+                  </div>
+                  <span style='display: none;'>
+
+                    <input  type="file" name="file" id="file" value="upload" accept="image/png, image/jpeg">
+                  </span>
+
+                  </p>
+                  <div class="botones_img">
+                    <div>
+                      <button type="submit" name="cambiar_img" id="enviar_img" class="btn-signup">Cambiar</button>
+                    </div>
+                    <div>
+                      <button type="reset" class="btn-signup">Cancelar</button>
+                    </div>
+                  </div>
+                  <?php 
+                  
+                    if (isset($_POST['cambiar_img'])) {
+
+                      $fileName = $_FILES['file']['name'];
+                      $fileType = $_FILES['file']['type'];
+                      $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+                      $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                      $nombre_imagen_perfil = 'perfil-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
+                      $nombre_imagen_perfil .= $extension;
+                      if ($fileType == "image/jpeg" || $fileType == "image/png") {
+                        move_uploaded_file($_FILES['file']['tmp_name'], "../imagen/img_perfil/$nombre_imagen_perfil");
+
+                        $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
+                        $fila = $MyBBDD->extraer_registro();
+                        $borrar_imagen = $fila['imagen_perfil'];
+                        if ($borrar_imagen != "perfil-por-defecto.png") {
+                          unlink('../imagen/img_perfil/'.$borrar_imagen);
+                          $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
+                          $_SESSION['username']['imagen'] =$nombre_imagen_perfil;
+                          echo("<meta http-equiv='refresh' content='1'>");
+                        } else {
+                          $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
+                          $_SESSION['username']['imagen'] =$nombre_imagen_perfil;
+                          echo("<meta http-equiv='refresh' content='1'>");
+                        }
+                      } else {
+
+                        echo "Formato no valido";
+                      }
+                    }
+                  
+                  ?>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="borrar_cuenta"> <span><a class="button" href="../Server/borrar_cuenta.php">Borrar cuenta</a></span></div>
+
+
+
 
 
 
@@ -171,39 +234,39 @@ session_start();
             <a class="cerrar_posts" id="cerrar_post" href="#">&times;</a>
 
             <?php
-        $usuario = $_SESSION['username']['usuario'];
-        $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
-        if ($MyBBDD->numero_filas() > 0) {
-          $x = 1;
-          $numero_filas = $MyBBDD->numero_filas();
-          for ($i = 0; $i < $numero_filas; $i++) {
-            $fila = $MyBBDD->extraer_registro();
-            if ($i == $numero_filas) {
-              break;
-            } else {
-              echo '<div class="columna">';
-              echo "<div class='titulo_autor'>";
-              echo "<div class='titulo'>Titulo del Post " . $x . "   " . $fila['post_titulo'] . '</div>';
-  
-              echo "<div class='tema'>Tema del post : " . $fila['post_tema'] . '</div>';
-              echo "<div class='autor'> <div class='foto'> 
+            $usuario = $_SESSION['username']['usuario'];
+            $MyBBDD->consulta("SELECT * from posts where post_autor = '$usuario'");
+            if ($MyBBDD->numero_filas() > 0) {
+              $x = 1;
+              $numero_filas = $MyBBDD->numero_filas();
+              for ($i = 0; $i < $numero_filas; $i++) {
+                $fila = $MyBBDD->extraer_registro();
+                if ($i == $numero_filas) {
+                  break;
+                } else {
+                  echo '<div class="columna">';
+                  echo "<div class='titulo_autor'>";
+                  echo "<div class='titulo'>Titulo del Post " . $x . "   " . $fila['post_titulo'] . '</div>';
+
+                  echo "<div class='tema'>Tema del post : " . $fila['post_tema'] . '</div>';
+                  echo "<div class='autor'> <div class='foto'> 
               <img class='imagen' src='../imagen/img_publicacion/"
-                . $fila['post_imagen'] . "'></div>";
-              echo $fila['post_autor'];
-              echo '</div>';
-              echo '</div>';
-              $x++;
+                    . $fila['post_imagen'] . "'></div>";
+                  echo $fila['post_autor'];
+                  echo '</div>';
+                  echo '</div>';
+                  $x++;
+                }
+              }
+            } else {
+
+              echo "<h2>Todavia no has posteado </h2>";
             }
-          }
-        } else{
-    
-          echo "<h2>Todavia no has posteado </h2>";
-        }
-      
 
 
 
-        ?>
+
+            ?>
           </div>
         </div>
 
@@ -213,15 +276,19 @@ session_start();
           let main = document.getElementsByTagName("body");
           let cerrar_post = document.getElementById("cerrar_post");
 
-          boton_posts.addEventListener("click", function () {
+          boton_posts.addEventListener("click", function() {
             contenedor_posts.style.visibility = "visible";
             document.documentElement.setAttribute("style", "overflow-Y: scroll;");
           })
 
-          cerrar_post.addEventListener("click", function () {
+          cerrar_post.addEventListener("click", function() {
             contenedor_posts.style.visibility = "hidden";
             document.documentElement.setAttribute("style", "overflow-Y: hidden;");
           })
+
+          function getFile() {
+            document.getElementById("file").click();
+          }
         </script>
 
   </main>
