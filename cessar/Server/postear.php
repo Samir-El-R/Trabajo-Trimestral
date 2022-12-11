@@ -20,7 +20,7 @@ if (isset($_POST['publicar'])) {
 
 // Pequeña validación para publicar(por longitud de tema y post)
 
-    if (!empty($post) && strlen($titulo) > 10) {
+    if (!empty($post) && strlen($post) > 10) {
         if (!empty($titulo) && strlen($titulo) > 5) {
 
             // Validación por tipo de imagen
