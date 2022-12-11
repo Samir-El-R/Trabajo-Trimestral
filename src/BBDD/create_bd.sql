@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS registro (
   PRIMARY KEY (id)
 );
 
+INSERT INTO registro (usuario,nombre,apellido,fecha_creacion,email,contrasena,imagen_perfil) values ('anonimo','anonimo','anonimo','0000-00-00 00:00:01',' AlbertoSamirCesar@gmail.com','anonimo12345','perfil-por-defecto.png');
+
 CREATE TABLE IF NOT EXISTS posts (
   post_id INT(8) NOT NULL AUTO_INCREMENT,
   post_contenido TEXT NOT NULL,

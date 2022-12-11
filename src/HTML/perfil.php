@@ -74,8 +74,7 @@ session_start();
 
       echo '<td >Cantidad de posts:</td>';
       echo '<td>';
-      echo $MyBBDD->numero_filas();
-      ;
+      echo $MyBBDD->numero_filas();;
       echo '</td> ';
       echo '  </tr>
     </table>';
@@ -99,22 +98,19 @@ session_start();
 
                   <p type="Contraseña nueva:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena" id="contrasena1"
-                      placeholder="Introduce las nueva contraseña">
+                    <input type="password" name="contrasena" id="contrasena1" placeholder="Introduce las nueva contraseña">
                   </p>
 
 
 
                   <p type="Confirmar nueva contraseña:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena2" id="contrasena2"
-                      placeholder="Confirma tu nueva contraseña">
+                    <input type="password" name="contrasena2" id="contrasena2" placeholder="Confirma tu nueva contraseña">
                   </p>
 
                   <div class="botones">
                     <div>
-                      <button type="submit" name="enviar" id="enviar_cambio_contrasena"
-                        class="btn-signup">Enviar</button>
+                      <button type="submit" name="enviar" id="enviar_cambio_contrasena" class="btn-signup">Enviar</button>
                     </div>
                     <div>
                       <button type="reset" class="btn-signup">Limpiar</button>
@@ -123,7 +119,7 @@ session_start();
                   <?php
 
                   // PHP que valida y cambia el cambio de contraseña una vez enviados
-                  
+
                   if (isset($_POST['enviar'])) {
                     $contrasena_nueva = $_POST['contrasena'];
                     $contrasena_nueva_confirmacion = $_POST['contrasena2'];
@@ -131,13 +127,23 @@ session_start();
                     $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
 
                     if ($contrasena_nueva == $contrasena_nueva_confirmacion) {
-                      $fila = $MyBBDD->extraer_registro();
-                      $contrasena_BBDD = $fila['contrasena'];
-                      if ($contrasena_nueva != $contrasena_BBDD) {
-                        $MyBBDD->consulta("UPDATE registro SET contrasena = '$contrasena_nueva' where usuario = '$usuario'");
-                        echo '<script>alert("La contraseña ha cambiado")</script>';
+                      if (empty($contrasena_nueva)) {
+                        echo '<script> alert("Introduzca sus contraseña !"); </script>';
+                      } else if (strlen($contrasena_nueva) < 8) {
+                        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';
+                      } else if (empty($contrasena_nueva_confirmacion)) {
+                        echo '<script> alert("Introduzca sus contraseña !"); </script>';
+                      } else if (strlen($contrasena_nueva_confirmacion) < 8) {
+                        echo '<script> alert("La contraseña debe tener al menos 8 caracteres !"); </script>';
                       } else {
-                        echo '<script>alert("La contraseña es igual a la que tienes")</script>';
+                        $fila = $MyBBDD->extraer_registro();
+                        $contrasena_BBDD = $fila['contrasena'];
+                        if ($contrasena_nueva != $contrasena_BBDD) {
+                          $MyBBDD->consulta("UPDATE registro SET contrasena = '$contrasena_nueva' where usuario = '$usuario'");
+                          echo '<script>alert("La contraseña ha cambiado")</script>';
+                        } else {
+                          echo '<script>alert("La contraseña es igual a la que tienes")</script>';
+                        }
                       }
                     } else {
                       echo '<script>alert("Las contraseñas no valen");</script>';
@@ -286,12 +292,12 @@ session_start();
           let main = document.getElementsByTagName("body");
           let cerrar_post = document.getElementById("cerrar_post");
 
-          boton_posts.addEventListener("click", function () {
+          boton_posts.addEventListener("click", function() {
             contenedor_posts.style.visibility = "visible";
             document.documentElement.setAttribute("style", "overflow-Y: scroll;");
           })
 
-          cerrar_post.addEventListener("click", function () {
+          cerrar_post.addEventListener("click", function() {
             contenedor_posts.style.visibility = "hidden";
             document.documentElement.setAttribute("style", "overflow-Y: hidden;");
           })

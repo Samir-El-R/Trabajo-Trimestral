@@ -20,6 +20,8 @@ if (isset($_POST['registrarse'])) {
         echo '<script> alert("Introduzca su usuario!"); </script>';
     } else if (!ctype_alnum($usuario)) {
         echo '<script> alert("El usuario solo debe tener letras y numeros!"); </script>';
+    } else if (strlen($usuario) <= 8) {
+        echo '<script> alert("El usuario debe tener 8 caracteres alfanumericos !"); </script>';
     } else if (empty($correo)) {
         echo '<script> alert("Introduzca su correo!"); </script>';
     } else if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {

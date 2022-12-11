@@ -107,7 +107,7 @@ $post_fecha = $fila['post_fecha'];
 
                 </div>
             </section>
-
+        
             <div class="post__message">
 
                 <!-- El contenido del post  -->
@@ -115,18 +115,21 @@ $post_fecha = $fila['post_fecha'];
                 <?php
                 echo ($post_contenido);
 
-                echo " <img src='../imagen/img_publicacion/" . $post_imagen . "'>  ";
+                if ($post_imagen != 'NULL') {
+                    echo " <img src='../imagen/img_publicacion/" . $post_imagen . "'>  ";
+                }
 
 
                 ?>
 
             </div>
-        </section>
+            </section> 
+           
 
     </div>
     <div class="enviar_cometarios">
 
-        <section id="app" <?php if (!isset($_SESSION["username"])) { echo 'style="display: none;"'; } ?>>>
+        <section id="app" <?php if (!isset($_SESSION["username"])) { echo 'style="display: none;"'; } ?>>
             <div class="container">
 
                 <form id="miFormulario" action="" method="post">

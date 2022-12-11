@@ -3,7 +3,7 @@ session_start();
 session_start();
 include 'conectarse.php';
 $usuario = $_SESSION["username"]['usuario'];
-$MyBBDD->consulta("UPDATE posts SET post_autor='admin' where post_autor='$usuario'");
+$MyBBDD->consulta("UPDATE posts SET post_autor='anonimo' where post_autor='$usuario'");
 
 // Query para borrar la fila de el usuario en la BBDD
 
