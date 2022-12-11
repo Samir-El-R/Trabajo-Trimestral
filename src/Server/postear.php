@@ -3,7 +3,7 @@
 include 'conectarse.php';
 if (isset($_POST['publicar'])) {
 
-// Recogida de datos al darle a publicar
+    // Recogida de datos al darle a publicar
 
     $autor = $_SESSION["username"]["usuario"];
     $post = $_POST['post'];
@@ -18,7 +18,7 @@ if (isset($_POST['publicar'])) {
     $nombre_imagen .= $extension;
 
 
-// Pequeña validación para publicar(por longitud de tema y post)
+    // Pequeña validación para publicar(por longitud de tema y post)
 
     if (!empty($post) && strlen($post) > 10) {
         if (!empty($titulo) && strlen($titulo) > 5) {

@@ -323,7 +323,7 @@ session_start();
          </style>';
 
             // Printeo de los post dependiendo del tema que se haya seleccionado
-
+            
             $valor = true;
             if (isset($_POST['general'])) {
                 $valor = false;
@@ -334,9 +334,9 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-        
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
-               
+
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
+
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -365,7 +365,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -393,7 +393,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -424,7 +424,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -452,7 +452,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -477,7 +477,7 @@ session_start();
                         break;
                     } else {
                         $cantidad++;
-                        echo "<a href='mostrar_post.php?variable=". $fila['post_id'] ."' >";
+                        echo "<a href='mostrar_post.php?variable=" . $fila['post_id'] . "' >";
                         echo '<div class="columna">';
                         echo "<div class='titulo_autor'>";
                         echo "<div class='titulo'>" . $fila['post_titulo'] . '</div>';
@@ -493,7 +493,7 @@ session_start();
                     }
                 }
             }
-                ?>
+            ?>
         </div>
     </main>
 </body>

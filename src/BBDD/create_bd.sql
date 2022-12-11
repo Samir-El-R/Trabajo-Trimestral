@@ -1,4 +1,5 @@
 CREATE DATABASE foro;
+
 CREATE TABLE IF NOT EXISTS registro (
   id INT UNSIGNED AUTO_INCREMENT,
   usuario varchar(255) not null unique,
@@ -10,6 +11,7 @@ CREATE TABLE IF NOT EXISTS registro (
   imagen_perfil varchar(255),
   PRIMARY KEY (id)
 );
+
 CREATE TABLE IF NOT EXISTS posts (
   post_id INT(8) NOT NULL AUTO_INCREMENT,
   post_contenido TEXT NOT NULL,
@@ -21,6 +23,7 @@ CREATE TABLE IF NOT EXISTS posts (
   PRIMARY KEY (post_id),
   FOREIGN KEY posts (post_autor) REFERENCES registro(usuario)
 );
+
 CREATE TABLE IF NOT EXISTS comentarios (
   id INT(8) NOT NULL AUTO_INCREMENT,
   contenido TEXT NOT NULL,

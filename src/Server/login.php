@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
 include 'conectarse.php';
 
 $_SESSION["username"] = array();
@@ -11,11 +11,11 @@ $contrasena = $_POST['contrasena_login'];
 
 if (!empty($usuario) && ctype_alnum($usuario) && !empty($contrasena)) {
   $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario' AND contrasena = '$contrasena'");
-  
+
   if ($MyBBDD->numero_filas() > 0) {
-    
+
     // Se asigna el nombre de usuario como un valor a la $_SESSION["username"]
-    
+
     $fila = $MyBBDD->extraer_registro();
     $_SESSION["username"]["usuario"] = $fila['usuario'];
     $_SESSION["username"]["imagen"] = $fila['imagen_perfil'];
@@ -23,14 +23,14 @@ if (!empty($usuario) && ctype_alnum($usuario) && !empty($contrasena)) {
     $_SESSION["username"]["apellido"] = $fila['apellido'];
     $_SESSION["username"]["fecha"] = $fila['fecha_creacion'];
     $_SESSION["username"]["correo"] = $fila['email'];
-    
+
 
     // Redirección a página principal
     header("location: ../HTML/index.php");
   } else {
 
     // Si no existe el usuario introducido se mantiene en la pagina de inicio sesión
-    
+
 
     header("location: ../HTML/acceder.php");
   }

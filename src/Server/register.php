@@ -6,8 +6,8 @@ if (isset($_POST['registrarse'])) {
     // recogida de datos al pulsar registrarse
 
     $usuario = $_POST['usuario_signup'];
-    $nombre  = $_POST['nombre_real'];
-    $apellidos= $_POST['apellidos_signup'];
+    $nombre = $_POST['nombre_real'];
+    $apellidos = $_POST['apellidos_signup'];
     $correo = $_POST['email_signup'];
     $contrasena = $_POST['contrasena_signup'];
     $confirmar_contrasena = $_POST['confirmar_contrasena_signup'];

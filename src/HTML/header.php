@@ -134,7 +134,6 @@
         display: inline-block;
         text-align: center;
         cursor: pointer;
-        /* margin-top: 10px; */
         margin-right: 50px;
         width: 51px;
         height: 51px;
@@ -256,34 +255,7 @@
                     location.href = "perfil.php";
                 })
             </script>
-                
-                    <!-- <div class="desplegable" id="desplegable" >
-                        <ul>
-                            <li>
-                                <a href="../HTML/perfil.php">Ir a perfil</a>
-                            </li>
-                            <li>
-                                <a href="../Server/cerrar_sesion.php" id="boton_cerrar_sesion">Cerrar Sesión</a>
-                            </li>
-                        </ul>
-                    </div> 
-                </div> -->
-
-                         
-
-                    <!-- Script para ocultar o mostrar el menu desplegable de perfil -->
-
-                    <!-- <script>
-                        let boton_acceder = document.getElementById("boton_acceder");
-                        let desplegable = document.getElementById("desplegable");
-                        boton_acceder.addEventListener("click", function() {
-                            if (desplegable.style.visibility == "hidden") {
-                                desplegable.style.visibility = "visible";
-                            } else {
-                                desplegable.style.visibility = "hidden";
-                            }
-                        })
-                    </script> -->
+          
                 </div>
 
                 <!-- Svg de cerrar sesión, es un enlace a cerrar_sesion.php donde se acaba la sesión -->

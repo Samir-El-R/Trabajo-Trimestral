@@ -268,7 +268,6 @@ body {
 
 .form [type='submit'] {
     opacity: 0;
-    /* display: block; */
     display: inline-block;
     min-width: 120px;
     margin: 30px auto 10px;
@@ -333,31 +332,27 @@ label {
     padding-left: 15px;
     font-size: 16px;
     line-height: 40px;
-    /* color: #000000; */
     text-transform: uppercase;
-    /* background: #eef9fe;
-    border: 1px solid #cddbef; */
     border-radius: 2px;
-    /*  */
     background: #ce76fa;
     border-radius: 100px;
-    /* padding: 20px 60px; */
     color: #fff;
     text-decoration: none;
     font-size: 1.45em;
 }
-.icon-tabler-cloud-upload{
-   display: inline-block;
-   width: 25px !important;
-   margin-left: 20px;
+
+.icon-tabler-cloud-upload {
+    display: inline-block;
+    width: 25px !important;
+    margin-left: 20px;
 }
-.uploader-text{
+
+.uploader-text {
     display: inline-block;
 }
-.div-btn-signup{
- 
+
+.div-btn-signup {
     display: flex;
-    /* align-items: center; */
     justify-content: space-around;
     width: 100%;
 }

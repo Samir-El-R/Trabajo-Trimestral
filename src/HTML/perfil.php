@@ -1,4 +1,5 @@
 <?php
+// Iniciamos la sesion
 session_start();
 
 ?>
@@ -16,7 +17,7 @@ session_start();
 <body>
 
 
-
+  <!-- Apartado donde ira toda la informacion del usuario con sus respectivas variables etc -->
   <main>
     <div class="main">
 
@@ -46,7 +47,7 @@ session_start();
       echo "Nombre " . $info_nombre;
       echo "</h1>";
       echo "<h1>";
-      echo " Apellido " .  $info_apellido;
+      echo " Apellido " . $info_apellido;
       echo "</h1>";
       echo '<h3 class="h3">';
       echo "Usuario : " . $info_usuario;
@@ -68,12 +69,13 @@ session_start();
       echo '</td>';
       echo '  </tr>
     <tr>';
-
+      // Consulta donde mostramos los numeros de los posts que ha hecho el usuario de forma numérica
       $MyBBDD->consulta("SELECT * FROM posts where post_autor='$usuario'");
 
       echo '<td >Cantidad de posts:</td>';
       echo '<td>';
-      echo $MyBBDD->numero_filas();;
+      echo $MyBBDD->numero_filas();
+      ;
       echo '</td> ';
       echo '  </tr>
     </table>';
@@ -82,7 +84,7 @@ session_start();
 
       <body>
         <div class="descripcion_lista">
-
+          <!-- Apartado donde ira el cambio de contraseña -->
           <div class="box">
             <a class="button" href="#popup1">Cambiar Contraseña</a>
           </div>
@@ -97,25 +99,31 @@ session_start();
 
                   <p type="Contraseña nueva:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena" id="contrasena1" placeholder="Introduce las nueva contraseña">
+                    <input type="password" name="contrasena" id="contrasena1"
+                      placeholder="Introduce las nueva contraseña">
                   </p>
 
 
 
                   <p type="Confirmar nueva contraseña:" class="parrafo">
                     <br>
-                    <input type="password" name="contrasena2" id="contrasena2" placeholder="Confirma tu nueva contraseña">
+                    <input type="password" name="contrasena2" id="contrasena2"
+                      placeholder="Confirma tu nueva contraseña">
                   </p>
 
                   <div class="botones">
                     <div>
-                      <button type="submit" name="enviar" id="enviar_cambio_contrasena" class="btn-signup">Enviar</button>
+                      <button type="submit" name="enviar" id="enviar_cambio_contrasena"
+                        class="btn-signup">Enviar</button>
                     </div>
                     <div>
                       <button type="reset" class="btn-signup">Limpiar</button>
                     </div>
                   </div>
                   <?php
+
+                  // PHP que valida y cambia el cambio de contraseña una vez enviados
+                  
                   if (isset($_POST['enviar'])) {
                     $contrasena_nueva = $_POST['contrasena'];
                     $contrasena_nueva_confirmacion = $_POST['contrasena2'];
@@ -141,7 +149,7 @@ session_start();
             </div>
           </div>
 
-
+          <!-- Boton que muestra todos tus posts -->
           <div id="todos_mis_posts">
             <span class="button"> Todos mis posts</span>
           </div>
@@ -168,7 +176,7 @@ session_start();
                   </div>
                   <span style='display: none;'>
 
-                    <input  type="file" name="file" id="file" value="upload" accept="image/png, image/jpeg">
+                    <input type="file" name="file" id="file" value="upload" accept="image/png, image/jpeg">
                   </span>
 
                   </p>
@@ -180,46 +188,47 @@ session_start();
                       <button type="reset" class="btn-signup">Cancelar</button>
                     </div>
                   </div>
-                  <?php 
-                  
-                    if (isset($_POST['cambiar_img'])) {
+                  <?php
+                  // PHP que lo que hace es cambiar la img de perfil que tenias por una nueva
+                  if (isset($_POST['cambiar_img'])) {
 
-                      $fileName = $_FILES['file']['name'];
-                      $fileType = $_FILES['file']['type'];
-                      $extension = pathinfo($fileName, PATHINFO_EXTENSION);
-                      $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
-                      $nombre_imagen_perfil = 'perfil-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
-                      $nombre_imagen_perfil .= $extension;
-                      if ($fileType == "image/jpeg" || $fileType == "image/png") {
-                        move_uploaded_file($_FILES['file']['tmp_name'], "../imagen/img_perfil/$nombre_imagen_perfil");
+                    $fileName = $_FILES['file']['name'];
+                    $fileType = $_FILES['file']['type'];
+                    $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+                    $nombre_imagen_perfil = 'perfil-' . substr(str_shuffle($permitted_chars), 0, 12) . '.';
+                    $nombre_imagen_perfil .= $extension;
+                    if ($fileType == "image/jpeg" || $fileType == "image/png") {
+                      move_uploaded_file($_FILES['file']['tmp_name'], "../imagen/img_perfil/$nombre_imagen_perfil");
 
-                        $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
-                        $fila = $MyBBDD->extraer_registro();
-                        $borrar_imagen = $fila['imagen_perfil'];
-                        if ($borrar_imagen != "perfil-por-defecto.png") {
-                          unlink('../imagen/img_perfil/'.$borrar_imagen);
-                          $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
-                          $_SESSION['username']['imagen'] =$nombre_imagen_perfil;
-                          echo("<meta http-equiv='refresh' content='1'>");
-                        } else {
-                          $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
-                          $_SESSION['username']['imagen'] =$nombre_imagen_perfil;
-                          echo("<meta http-equiv='refresh' content='1'>");
-                        }
+                      $MyBBDD->consulta("SELECT * FROM registro where usuario = '$usuario'");
+                      $fila = $MyBBDD->extraer_registro();
+                      $borrar_imagen = $fila['imagen_perfil'];
+                      if ($borrar_imagen != "perfil-por-defecto.png") {
+                        unlink('../imagen/img_perfil/' . $borrar_imagen);
+                        $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
+                        $_SESSION['username']['imagen'] = $nombre_imagen_perfil;
+                        echo ("<meta http-equiv='refresh' content='1'>");
                       } else {
-
-                        echo "Formato no valido";
+                        $MyBBDD->consulta("UPDATE registro SET imagen_perfil='$nombre_imagen_perfil' where usuario='$usuario'");
+                        $_SESSION['username']['imagen'] = $nombre_imagen_perfil;
+                        echo ("<meta http-equiv='refresh' content='1'>");
                       }
+                    } else {
+
+                      echo "Formato no valido";
                     }
-                  
+                  }
+
                   ?>
                 </form>
               </div>
             </div>
           </div>
 
-
-          <div class="borrar_cuenta"> <span><a class="button" href="../Server/borrar_cuenta.php">Borrar cuenta</a></span></div>
+          <!-- Boton de borrar cuenta que te llevara a otro archivo que ejecutara la accion -->
+          <div class="borrar_cuenta"> <span><a class="button" href="../Server/borrar_cuenta.php">Borrar
+                cuenta</a></span></div>
 
 
 
@@ -228,6 +237,7 @@ session_start();
 
         </div>
 
+        <!-- Contenedor donde saldran los posts si pulsas el anterior boton -->
         <div id="contenedor_posts">
           <div class="contenedor_posts">
 
@@ -269,19 +279,19 @@ session_start();
             ?>
           </div>
         </div>
-
+        <!-- Script que muestra u oculta el div de mostrar los posts del usuario -->
         <script>
           let boton_posts = document.getElementById('todos_mis_posts');
           let contenedor_posts = document.getElementById('contenedor_posts');
           let main = document.getElementsByTagName("body");
           let cerrar_post = document.getElementById("cerrar_post");
 
-          boton_posts.addEventListener("click", function() {
+          boton_posts.addEventListener("click", function () {
             contenedor_posts.style.visibility = "visible";
             document.documentElement.setAttribute("style", "overflow-Y: scroll;");
           })
 
-          cerrar_post.addEventListener("click", function() {
+          cerrar_post.addEventListener("click", function () {
             contenedor_posts.style.visibility = "hidden";
             document.documentElement.setAttribute("style", "overflow-Y: hidden;");
           })
